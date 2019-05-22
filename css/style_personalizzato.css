@@ -1,0 +1,388 @@
+.highlighted-sorted{
+	color:#729ebb;
+}
+
+#lista-ordini thead th:nth-child(3):hover, #lista-ordini thead th:nth-child(4):hover{
+	cursor:pointer;
+}
+
+.absolute-icon{
+	position:absolute;
+	text-shadow: 0px 0px 0.2px rgba(150, 150, 150, 1);
+	color:#FCB322 !important;
+	left: 3px;
+    top: 5px;
+}
+
+.absolute-icon.eur{
+	color:inherit !important;
+	font-size: 15px;
+	left: 8px;
+    top: 5px;
+}
+
+.absolute-icon.times{
+	color:inherit !important;
+	font-size: 15px;
+	left: 6px;
+    top: 5px;
+}
+
+
+
+#totale-parziale{
+	width:100px;
+}
+
+#totale-parziale-wrapper span{
+	float:left;
+	margin-right:7px;
+}
+
+
+#totale-parziale-wrapper input{
+	float:right;
+}
+
+#totale-parziale-wrapper div:after{
+	display: block;
+	content: '';
+	clear: both;
+}
+
+#totale-parziale-persona{
+	width:100px;
+}
+
+#modal-gest .info-totale-chiusa{
+	margin-top:15px;
+}
+
+#modal-gest .info-totale-chiusa p{
+	text-align:right;
+}
+
+#modal-gest .com-top-info button:not(:first-child){
+	margin-left:10px;
+}
+
+#termina-serata-butt:hover i.fa, #termina-serata-butt:hover{
+	color:#ff6c60;
+}
+
+#bottoni-comanda-mod{
+	padding:20px 0;
+	text-align:right;
+}
+
+.table-home thead tr{
+	background-color: #f9f9f9;
+}
+.table-home tbody tr td:hover{
+	cursor:pointer;
+}
+.table-home tbody tr:nth-child(even){
+	background-color: #F1F1F1;
+}
+
+#bottoniright{
+	display:inline-block;
+	float:right;
+}
+
+#bottonigetcom{
+	display:block;
+	margin-bottom:10px;
+}
+
+#bottonigetcom button{
+	float:right;
+}
+
+#bottonigetcom:after{
+	display: block;
+	content: '';
+	clear: both;
+}
+
+#wrapper-soci-left{
+	float:left;
+}
+#wrapper-soci-left:after{
+	display: block;
+	content: '';
+	clear: both;
+}
+
+#soci-int{
+	display: block;
+}
+#soci-int:after{
+	display: block;
+	content: '';
+	clear: both;
+}
+
+#wrapper-soci{
+	display: block;
+	margin-top:15px;
+}
+#wrapper-soci:after{
+	display: block;
+	content: '';
+	clear: both;
+}
+#wrapper-soci span{
+	display: inline-block;
+	margin-top:7px;
+	margin-left:7px;
+}
+#numero-soci-wrapper{
+	float:left;
+}
+#sconto-manuale-wrapper{
+	margin-left:10px;
+	float:left;
+}
+#totale-parziale-wrapper{
+	float:right;
+}
+
+#numero-soci{
+	width:70px;
+	float:left;
+}
+#sconto-manuale{
+	width:100px;
+	float:left;
+}
+
+#bottoni-dashboard{
+	padding:20px;
+	text-align: center;
+}
+
+#bottoni-dashboard a{
+	margin-bottom:20px;
+	padding: 20px 30px;
+}
+
+#bottoni-dashboard a:not(:first-child){
+	margin-left:20px;
+}
+
+#lista-piatti-menu{
+	display: block;
+}
+
+#lista-piatti td{
+	vertical-align: middle;
+}
+
+#lista-piatti tr.highlighted{
+	background-color: #E9FDFF;
+}
+
+#lista-piatti td .row{
+	margin:0px;
+}
+
+#lista-piatti td .fl{
+	float:left;
+	margin-right: 10px;
+}
+
+#lista-piatti td:last-child{
+	width:330px;
+	padding:5px !important;
+}
+
+#lista-piatti td:nth-child(3):first-letter{
+	text-transform: capitalize;
+}
+
+#lista-piatti td .input-group{
+	width:auto;
+	max-width: 200px;
+}
+
+#lista-piatti td .input-group input[type=number]::-webkit-inner-spin-button, 
+#lista-piatti td .input-group input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#wrapper-left{
+	width:20%;
+	float:left;
+}
+
+#wrapper-left:after{
+	content: '';
+    display: block;
+	clear:both;
+}
+
+#wrapper-right{
+	width:80%;
+	padding: 0 20px;
+	float:left;
+}
+
+#wrapper-right .info-tavolo{
+	margin-left:10px;
+}
+
+#wrapper-right .box-group{
+	width:100%;
+	display: block;
+}
+
+#wrapper-right .box-group:not(:first-child){
+	margin-top:15px;
+}
+
+#wrapper-right .box-group:after{
+	content: '';
+    display: block;
+	clear:both;
+}
+
+#wrapper-right .box-group .btn{
+	margin-bottom:5px;
+	padding:10px 20px;
+	font-weight: bold;
+}
+
+#wrapper-right .box-group .btn:not(:last-child){
+	margin-right:5px;
+}
+
+#conteggio-posti{
+	width:100%;
+	display:block;
+	background-color:rgba(202, 202, 202, 0.31);
+	border-right: 1px solid #FFFFFF;
+	padding:5px 10px 5px 10px;
+}
+
+#lista-ordini tr td{
+	padding:7px;
+}
+
+#lista-ordini tr td:first-child{
+	text-align: center;
+}
+
+#lista-ordini tr td i.fa{
+	color:#ff6c60;
+}
+#lista-ordini tr td i.fa.attiva{
+	color:#78CD51;
+}
+
+#lista-ordini tr td:hover{
+	cursor:pointer;
+}
+
+#table-wrapper{
+	display: block;
+	max-height: 500px;
+	overflow-y:auto;
+}
+
+#conteggio-posti span{
+	float: right;
+}
+
+#editable-sample{
+	width:100%;
+}
+
+#editable-sample.portate tbody td:nth-child(2)::first-letter{
+	text-transform: uppercase;
+}
+
+#editable-sample_wrapper .form-control{
+	width:100% !important;
+}
+
+.input-error{
+	border-color: #B94A48;
+}
+
+.form-control.num{
+	min-width:50px;
+}
+
+.logo span.l1{
+	color: #2980b9;
+}
+
+.logo span.l2{
+	color: #FDF22E;
+}
+
+.logo > img{
+	margin-left:5px;
+	margin-top:-3px;
+}
+
+.riga-paneecoperto{
+	background-color: #E8F5FF !important;
+}
+
+.riga-antipasto{
+	background-color: #CCEAFF !important;
+}
+
+.riga-bruschetteecrostoni{
+	background-color: #E2FFE1 !important;
+}
+
+.riga-primo{
+	background-color: #D2FFCC !important;
+}
+
+.riga-secondo{
+	background-color: #FEFFDE !important;
+}
+
+.riga-piadina{
+	background-color: #FEFFC9 !important;
+}
+
+.riga-contorno{
+	background-color: #FFE5DE !important;
+}
+
+.riga-dolce{
+	background-color: #FFEAFF !important;
+}
+
+.riga-bevanda{
+	background-color: #FDD4FD !important;
+}
+
+.categoria-portata:first-letter {
+    text-transform: uppercase;
+}
+
+#buttons-wrapper{
+	width:100%;
+	text-align:center;
+}
+
+#buttons-wrapper li a{
+	padding: 10px 13px;
+	color: #8D8D8D;
+}
+
+#buttons-wrapper .nav-tabs{
+	margin-bottom:-4px;
+	display: inline-block;
+	border-bottom:1px solid transparent;
+}
+
+
+
