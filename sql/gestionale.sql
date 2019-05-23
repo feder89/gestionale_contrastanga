@@ -117,6 +117,11 @@ CREATE TABLE `zone` (
   `data_creazione` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `data_aggiornamento` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `prenotazioni` (
+  `serata` date NOT NULL,
+  `tavoli` int(11) NOT NULL,
+  `coperti` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ALTER TABLE `comande`
   ADD PRIMARY KEY (`serata`,`tavolo`,`indice`),
   ADD KEY `tavolocom_idx` (`tavolo`),
