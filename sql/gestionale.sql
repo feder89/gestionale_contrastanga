@@ -121,7 +121,10 @@ CREATE TABLE `prenotazioni` (
   `serata` date NOT NULL,
   `tavoli` int(11) NOT NULL,
   `coperti` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `utente` (`username`, `password`, `gruppo`, `nome`, `cognome`, `email`, `tel_fisso`, `tel_mobile`, `foto`) VALUES
+('daniele', '47477de04d78d5a360c5fda47a986955', 'amm', 'Daniele', 'Binucci', '', NULL, NULL, NULL),
+('pier_ferri', '201f00b5ca5d65a1c118e5e32431514c', 'amm', 'Pergiorgio', 'Ferri', '', NULL, NULL, NULL);
 ALTER TABLE `comande`
   ADD PRIMARY KEY (`serata`,`tavolo`,`indice`),
   ADD KEY `tavolocom_idx` (`tavolo`),
