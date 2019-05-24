@@ -1757,20 +1757,26 @@ function stampaRicevuta(tavolo,indice){
         	indice: indice
         }, function(result) {
         	newpage = result;
-        	myWindow = window.open('javascript: document.write(window.opener.newpage);', 'popUpWindow','height=500, width=800, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
+        	/*myWindow = window.open('javascript: document.write(window.opener.newpage);', '_blank','height=500, width=800, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
         	myWindow.document.close();
         	contoInviato(tavolo, indice);
         	myWindow.print();
-        	myWindow.close();
+        	myWindow.close();*/
+        	var myWindow = window.open("", "myWindow", 'height=500, width=800, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
+        	myWindow.document.write(newpage);
+        	myWindow.document.close();
+        	contoInviato(tavolo, indice);
+        	myWindow.print();
+        	myWindow.close();    
     });
 
-	/*
+	
 	//avvia stampa
-	$.ajax({
+	/*$.ajax({
         type: 'POST',
         url: "stampa/stampa_ricevuta.php",
         dataType: "text",
-        timeout: 20000,
+        timeout: 60000,
         data : {
             tavolo: tavolo,
         	indice: indice
@@ -1780,8 +1786,15 @@ function stampaRicevuta(tavolo,indice){
         success: function(result){
             var errore = false;
             if(stringStartsWith(result, '#error#')) errore=true;
-
-            if(errore){
+        	newpage = result;
+        	//myWindow = window.open('javascript: document.write(window.opener.newpage);', '_blank','height=500, width=800, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
+        	var myWindow = window.open("", "myWindow", 'height=500, width=800, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
+        	myWindow.document.write(newpage);
+        	myWindow.document.close();
+        	contoInviato(tavolo, indice);
+        	myWindow.print();
+        	myWindow.close();            
+        	if(errore){
             	notify_top(result, 'Stampa Ricevuta'); 
             }
         },
