@@ -33,11 +33,20 @@
                         case "sett2016";
                             $quintana = "Settembre 2016";                      	
                       	break;
+                        case "sett2017";
+                            $quintana = "Settembre 2017";                      	
+                      	break;
                         case "giu2016";
                             $quintana = "Giugno 2016";
                         break;
                         case "giu2017";
                             $quintana = "Giugno 2017";
+                        break;
+                        case "giu2018";
+                            $quintana = "Giugno 2018";
+                        break;
+                        case "sett2018";
+                            $quintana = "Settembre 2018";
                         break;
                       }
                     ?>

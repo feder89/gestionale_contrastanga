@@ -806,10 +806,11 @@ function _stampa_su_stampante(tavolo, portate, indice){
         	indice: ( indice == null ? 0 : indice)
         }, function(result) {
         	newpage = result;
-        	myWindow = window.open('javascript: document.write(window.opener.newpage);', 'popUpWindow','height=500, width=800, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
+        	var myWindow = window.open("", "myWindow2", 'height=500, width=800, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
+        	myWindow.document.write(newpage);
         	myWindow.document.close();
         	myWindow.print();
-        	myWindow.close();
+        	myWindow.close(); 
     });
 
 	/*
@@ -974,11 +975,14 @@ function _inflate_modifica_comanda(tavolo, indice){
 						            aggiornaTotParziale(tavolo,indice);
 
 					            	$('#bottoniright').html('');
-						            $('#bottoni-comanda-mod').html('<button type="button" style="margin-right:7px;" class="btn btn-success salvachiudi">Salva e chiudi <i style="margin-left:5px;" class="fa fa-floppy-o" aria-hidden="true"></i></button><button type="button" style="margin-right:7px;" class="btn btn-success salva">Salva <i style="margin-left:5px;" class="fa fa-floppy-o" aria-hidden="true"></i></button><button type="button" class="btn btn-danger annulla">Annulla</button></div>');
+						            $('#bottoni-comanda-mod').html('<button type="button" style="margin-right:7px;" class="btn btn-success salvachiudi">Salva e chiudi <i style="margin-left:5px;" class="fa fa-floppy-o" aria-hidden="true"></i></button>'
+						            +'<button type="button" style="margin-right:7px;" class="btn btn-success salva">Salva <i style="margin-left:5px;" class="fa fa-floppy-o" aria-hidden="true"></i></button>'
+						            +'<button type="button" class="btn btn-danger annulla">Annulla</button></div>');
 						            $('#bottonigetcom').html('<button type="button" style="margin-right:7px;" class="btn btn-success salvachiudi">Salva e chiudi <i style="margin-left:5px;" class="fa fa-floppy-o" aria-hidden="true"></i></button><button type="button" style="margin-right:7px;" class="btn btn-success salva">Salva <i style="margin-left:5px;" class="fa fa-floppy-o" aria-hidden="true"></i></button>'
                                                             +'<button style="margin-right:7px;" type="button" class="btn btn-danger annulla">Annulla</button>'
 						            						+'<button style="margin-right:7px;" type="button" class="btn btn-danger chiudi-comanda">Chiudi Comanda</button>'
 						            						+'<button style="margin-right:7px;" type="button" class="btn btn-info stampa-ricevuta"><i class="fa fa-print" aria-hidden="true"></i> Stampa Ricevuta</button>'
+						            						+'<button style="margin-right:7px;" type="button" class="btn btn-default stampa-fisc"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Stampa Ric. Fiscale</button>'
 						            						);
                                     //$('#bottoni-comanda-mod1').html('<br/><button type="button" style="margin-right:7px;" class="btn btn-success salvachiudi">Salva e chiudi <i style="margin-left:5px;" class="fa fa-floppy-o" aria-hidden="true"></i></button><button type="button" style="margin-right:7px;" class="btn btn-success salva">Salva <i style="margin-left:5px;" class="fa fa-floppy-o" aria-hidden="true"></i></button>');
 
@@ -989,6 +993,8 @@ function _inflate_modifica_comanda(tavolo, indice){
 						            	else if($(this).hasClass('stampa-ricevuta')) stampaRicevuta(tavolo, indice);
 						            	else if($(this).hasClass('conto-inviato')) contoInviato(tavolo, indice);
                                         else if($(this).hasClass('elimina-comanda')) eliminaComanda(tavolo, indice);
+                                        else if($(this).hasClass('stampa-fisc')) stampaRicevutaFiscale(tavolo, indice);
+
 						            });
 
 						            //annulla
@@ -1524,6 +1530,7 @@ function eliminaComanda(tavolo, indice){
     			$('#wrapper-right .chiudi-comanda').prop("disabled",true);
     			$('#wrapper-right .stampa-ricevuta').prop("disabled",true);
     			$('#wrapper-right .stampa-fattura').prop("disabled",true);
+    			$('#wrapper-right .stampa-fisc').prop("disabled",true);
             },
             success: function(result){
                 console.log(result);
@@ -1538,6 +1545,7 @@ function eliminaComanda(tavolo, indice){
     				$('#wrapper-right .chiudi-comanda').prop("disabled",false);
     				$('#wrapper-right .stampa-ricevuta').prop("disabled",false);
     				$('#wrapper-right .stampa-fattura').prop("disabled",false);
+    				$('#wrapper-right .stampa-fisc').prop("disabled",false);
                 }
                 else{
                 	//disattiva bottone salva
@@ -1546,6 +1554,7 @@ function eliminaComanda(tavolo, indice){
     				$('#wrapper-right .chiudi-comanda').prop("disabled",true);
     				$('#wrapper-right .stampa-ricevuta').prop("disabled",true);
     				$('#wrapper-right .stampa-fattura').prop("disabled",true);
+    				$('#wrapper-right .stampa-fisc').prop("disabled",true);
                 	//torna indietro 
                 	annullaNuovaComanda();
                 	$('#modal-gest').modal('hide');
@@ -1561,6 +1570,7 @@ function eliminaComanda(tavolo, indice){
     			$('#wrapper-right .chiudi-comanda').prop("disabled",false);
     			$('#wrapper-right .stampa-ricevuta').prop("disabled",false);
     			$('#wrapper-right .stampa-fattura').prop("disabled",false);
+    			$('#wrapper-right .stampa-fisc').prop("disabled",false);
                 notify_top("#error#Errore durante l'operazione", 'Elimina Comanda'); 
             }
         });   
@@ -1615,6 +1625,7 @@ function _chiudiComanda(tavolo, indice, pagato){
 			$('#wrapper-right .chiudi-comanda').prop("disabled",true);
 			$('#wrapper-right .stampa-ricevuta').prop("disabled",true);
 			$('#wrapper-right .stampa-fattura').prop("disabled",true);
+			$('#wrapper-right .stampa-fisc').prop("disabled",true);
         },
         success: function(result){
             var errore = false;
@@ -1628,6 +1639,7 @@ function _chiudiComanda(tavolo, indice, pagato){
 				$('#wrapper-right .chiudi-comanda').prop("disabled",false);
 				$('#wrapper-right .stampa-ricevuta').prop("disabled",false);
 				$('#wrapper-right .stampa-fattura').prop("disabled",false);
+				$('#wrapper-right .stampa-fisc').prop("disabled",false);
             }
             else{
             	//disattiva bottone salva
@@ -1636,6 +1648,7 @@ function _chiudiComanda(tavolo, indice, pagato){
 				$('#wrapper-right .chiudi-comanda').prop("disabled",true);
 				$('#wrapper-right .stampa-ricevuta').prop("disabled",true);
 				$('#wrapper-right .stampa-fattura').prop("disabled",true);
+				$('#wrapper-right .stampa-fisc').prop("disabled",true);
             	//torna indietro 
             	annullaNuovaComanda();
             	$('#modal-gest').modal('hide');
@@ -1651,6 +1664,7 @@ function _chiudiComanda(tavolo, indice, pagato){
 			$('#wrapper-right .chiudi-comanda').prop("disabled",false);
 			$('#wrapper-right .stampa-ricevuta').prop("disabled",false);
 			$('#wrapper-right .stampa-fattura').prop("disabled",false);
+			$('#wrapper-right .stampa-fisc').prop("disabled",false);
             notify_top("#error#Errore durante l'operazione", 'Chiudi Comanda'); 
         }   
 
@@ -1690,6 +1704,7 @@ function visualizzaComandaChiusa(tavolo,indice){
 	$('#modal-gest .modal-footer button').off('click').on('click', function(){
     	if($(this).hasClass('stampa-fattura')) stampaFattura(tavolo, indice);
     	else if($(this).hasClass('stampa-ricevuta')) stampaRicevuta(tavolo, indice);
+    	else if($(this).hasClass('stampa-fisc')) stampaRicevutaFiscale(tavolo, indice);
     	else if($(this).hasClass('riapri-comanda')) riapriComanda(tavolo, indice);
     });
 
@@ -2011,32 +2026,70 @@ function contoInviato(tavolo, indice){
 }
 
 
+function stampaRicevutaFiscale(tavolo,indice){
+	$('#modal-gest #modal-titolo').text( 'Stampa Ricevuta Fiscale');
+	$('#modal-gest .modal-body').html( '<span style="font-size:15px;">La ricevuta fiscale è stata stampata correttamente?</span>');
+	$('#modal-gest .modal-footer').html( '<button class="btn btn-default ristampa" type="button"><i class="fa fa-print" aria-hidden="true"></i> Ristampa</button>'+
+										'<button class="btn btn-success ok" type="button"><i class="fa fa-check" aria-hidden="true"></i> Si</button>');
+	var success=false;
+	$.ajax({
+        type: 'POST',
+        url: "ajax/gestisci_ricevute_fiscali.ajax.php",
+        dataType: "text",
+        timeout: 20000,
+        data : {
+        	tavolo: tavolo,
+        	indice:indice,
+        	operazione: 'stampa-ricevuta-fiscale'
+        },
+        beforeSend: function(){
+        	$('#modal-gest .modal-footer button').prop("disabled",false);
+        },
+        success: function(result){
+            var errore = false;
+            if(stringStartsWith(result, '#error#')) errore=true;
+            if(!errore){
+            	stampaFiscale(tavolo,indice);
+	            $('#modal-gest').modal('show');
+	            notify_top(result, 'Stampa Ricevuta Fiscale');
+            }
+			
+            if(errore){
+            	$('#modal-gest .modal-footer button').prop("disabled",false);
+            }
+        },
+        error: function( jqXHR, textStatus, errorThrown ){
+        	$('#modal-gest .modal-footer button').prop("disabled",false);
+        	notify_top('#error#Errore durante l\'operazione', 'Stampa Ricevuta Fiscale');
+        }   
 
+	});
+	
+     
+	
+    $('#modal-gest .ristampa').off('click').on('click', function(){
+		stampaFiscale(tavolo, indice);
+	});
+	$('#modal-gest .ok').off('click').on('click', function(){
+		$('#modal-gest').modal('hide');
+	});
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function stampaFiscale(tavolo, indice){
+	$.post('stampa/stampa_ricevuta_new.php', {
+            tavolo: tavolo,
+        	indice: indice
+        }, function(result) {
+        	newpage = result;
+        	/*myWindow = window.open('javascript: document.write(window.opener.newpage);', '_blank','height=500, width=800, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
+        	myWindow.document.close();
+        	contoInviato(tavolo, indice);
+        	myWindow.print();
+        	myWindow.close();*/
+        	var myWindow = window.open("", "myWindow3", 'height=500, width=800, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
+        	myWindow.document.write(newpage);
+        	myWindow.document.close();
+        	myWindow.print();
+        	myWindow.close();    
+    });
+}

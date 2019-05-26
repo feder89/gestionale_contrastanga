@@ -29,7 +29,7 @@
                     //$str='#indice#'.$nuovo_indice;
                     echo $nuovo_indice;
                     //console.log($nuovo_indice);
-            }
+                }
             //mysqli_free_result($res);
             disconnetti_mysql($link);
         }

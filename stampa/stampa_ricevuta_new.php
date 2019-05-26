@@ -100,7 +100,7 @@
     }
     html, body{
       width: 210mm;
-      height: 280mm;
+      height: 269mm;
       font-family: HelveticaNeue;
     }
     th, h2{
@@ -108,9 +108,9 @@
         font-weight: bold;
     }
     div.contenitore{
-      width: 150mm;
+      width: 145mm;
       font-family: Helvetica;
-      height: 150mm;
+      height: 145mm;
       vertical-align: top;
       transform:rotate(90deg);
 
@@ -556,8 +556,8 @@
                     </div>
                       <div class="info">
                         <!--<h2 class="comanda">Rione Contrastanga<br />Taverna Sette Selle</h2>-->
-                        <text class="info">Comanda n. '.$num_comanda.' Tavolo: '.$tavolo.'/'.$indice.'</text><br />
-                        <text class="standard">del giorno '.date_format(date_create($serata_attuale),"d/m/Y").'</text>';
+                        <!--<text class="info">Comanda n. '.$num_comanda.' Tavolo: '.$tavolo.'/'.$indice.'</text><br />
+                        <text class="standard">del giorno '.date_format(date_create($serata_attuale),"d/m/Y").'</text>-->';
                         $html_backup_tot.='<p class="totale"><span class="sx">Totale prodotti </span><span class="dx">&#8364; '.$totale.'</span><br/>';
                         $html_backup_tot.='<span class="sx">Numero soci '.$soci.'<br /> soci con sconto 10%</span><br />';
                         if ($sconto_manuale>0) {
@@ -581,8 +581,8 @@
                 </div>
                       <div class="info">
                         <!--<h2 class="comanda">Rione Contrastanga<br />Taverna Sette Selle</h2>-->
-                        <text class="info">Comanda n. '.$num_comanda.' Tavolo: '.$tavolo.'/'.$indice.'</text><br />
-                        <text class="standard">del giorno '.date_format(date_create($serata_attuale),"d/m/Y").'</text>'
+                        <!--<text class="info">Comanda n. '.$num_comanda.' Tavolo: '.$tavolo.'/'.$indice.'</text><br />
+                        <text class="standard">del giorno '.date_format(date_create($serata_attuale),"d/m/Y").'</text>-->'
                         .$html_backup_tot.'</p>            
 </body>
 </html>

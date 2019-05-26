@@ -12,7 +12,6 @@
     $antipasti= array();
     $bruschette= array();
     $piadine= array();
-    $taglieri=array();
     $nuovo_indice = 0;
     $nuova=false;
     if(isset($_POST['ordini']) && is_array($_POST['ordini']) && isset($_POST['tavolo']) && is_numeric($_POST['tavolo'])){
@@ -69,11 +68,7 @@
                         $primi[]=array("p" => $portata, "q" => $quantita);
                         break;
                     case 'antipasto':
-                        if(strncmp($portata, 'Tagliere', 8)===0){
-                          $taglieri[]=array("p" => $portata, "q" => $quantita);
-                        }else{
-                          $antipasti[]=array("p" => $portata, "q" => $quantita);
-                        }
+                        $antipasti[]=array("p" => $portata, "q" => $quantita);
                         break;
                     case 'bruschette e crostoni':
                         $bruschette[]=array("p" => $portata, "q" => $quantita);
@@ -132,21 +127,8 @@
         width: 100%;
         padding-left: 10mm;
     }
-    div.bevanda{
-        width: 145mm;
+    div.rect.bevanda{
         height: 39mm;
-        float: left;
-        display: block;
-        padding-top: 3mm;
-        padding-right: 3mm;
-    }
-    div.tagliere{
-        width: 56mm;
-        height: 39mm;
-        float: right;
-        display: block;
-        padding-right: 3mm;
-        padding-top: 3mm;
     }
     div.rect.dolce{
         height: 48mm;
@@ -210,8 +192,7 @@
   </style>
   </head>
   <body>
-    <div id="wrapper" class="rect">
-    <div class="bevanda">';
+    <div class="rect bevanda">';
     if(!empty($bevande_coperti)){
       $html.='<div style="font-size: 12pt;">[Bevande Coperti] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
         <table class="ordini">
@@ -228,27 +209,8 @@
           }
         $html.='</table>';
     }
-
-    $html.='</div>
-      <div class="tagliere">';
-      if(!empty($taglieri)){
-        $html.='<div style="font-size: 12pt;">[Tagliere] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
-        <table class="ordini">
-          <tr>
-            <th>Prodotto</th>
-            <th>Quantit&agrave;</th>
-          </tr>';
-        foreach ($taglieri as $key=>$value) {
-        $new_portata = preg_replace('/ FISSO$/', '', $value['p']);
-          $html.='<tr>
-                    <td>'.$new_portata.'</td>
-                    <td>'.$value['q'].'</td>
-                  </tr>';           
-        }
-        $html.='</table>';
-      }
         
-    $html.='</div></div>
+    $html.='</div>
     <div class="rect dolce">';
     if(!empty($dolci)){
       $html.='<div style="font-size: 12pt;">[Dolci] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
