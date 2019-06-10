@@ -69,11 +69,7 @@
                         $primi[]=array("p" => $portata, "q" => $quantita);
                         break;
                     case 'antipasto':
-                        if(strncmp($portata, 'Tagliere', 8)===0){
-                          $taglieri[]=array("p" => $portata, "q" => $quantita);
-                        }else{
-                          $antipasti[]=array("p" => $portata, "q" => $quantita);
-                        }
+                        $antipasti[]=array("p" => $portata, "q" => $quantita);
                         break;
                     case 'bruschette e crostoni':
                         $bruschette[]=array("p" => $portata, "q" => $quantita);
@@ -115,7 +111,7 @@
   <meta name="generator" content="PSPad editor, www.pspad.com">
   <title></title>
   <style type="text/css">
-    @page {size: 210mm 297mm;}
+    @page {size: 210mm 297mm; margin: 0;}
     @font-face {
       font-family: \'HelveticaNeue\';
       src: url(\'../fonts/HelveticaNeueLt.ttf\') format(\'truetype\');
@@ -133,7 +129,7 @@
         padding-left: 10mm;
     }
     div.bevanda{
-        width: 145mm;
+        width: 125mm;
         height: 39mm;
         float: left;
         display: block;
@@ -141,7 +137,7 @@
         padding-right: 3mm;
     }
     div.tagliere{
-        width: 56mm;
+        width: 66mm;
         height: 39mm;
         float: right;
         display: block;
@@ -231,14 +227,14 @@
 
     $html.='</div>
       <div class="tagliere">';
-      if(!empty($taglieri)){
-        $html.='<div style="font-size: 12pt;">[Tagliere] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
+      if(!empty($piadine)){
+        $html.='<div style="font-size: 10pt;">[Crepes] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
         <table class="ordini">
           <tr>
             <th>Prodotto</th>
             <th>Quantit&agrave;</th>
           </tr>';
-        foreach ($taglieri as $key=>$value) {
+        foreach ($piadine as $key=>$value) {
         $new_portata = preg_replace('/ FISSO$/', '', $value['p']);
           $html.='<tr>
                     <td>'.$new_portata.'</td>
@@ -346,22 +342,7 @@
         
       $html.='</div>
       <div class="piadine">';
-      if(!empty($piadine)){
-        $html.='<div style="font-size: 12pt;">[Piadine] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
-        <table class="ordini">
-          <tr>
-            <th>Prodotto</th>
-            <th>Quantit&agrave;</th>
-          </tr>';
-        foreach ($piadine as $key=>$value) {
-        $new_portata = preg_replace('/ FISSO$/', '', $value['p']);
-          $html.='<tr>
-                    <td>'.$new_portata.'</td>
-                    <td>'.$value['q'].'</td>
-                  </tr>';          	
-        }
-        $html.='</table>';
-      }
+      
         
       $html.='</div>
       </div>

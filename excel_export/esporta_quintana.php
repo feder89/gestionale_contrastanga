@@ -88,7 +88,7 @@ else {
         
 	/*}
 } */
-$exporter->addRow();
+$exporter->addRow(array());
 $exporter->addRow(array('Menù', 'n. venduti', 'prezzo'));
 $query_quant_menu_fissi="SELECT menu, COUNT(*) AS NUM, prezzo_fisso FROM Comande c INNER JOIN Menu m ON c.menu=m.nome_menu WHERE M.fisso=1 GROUP BY c.menu";
 $query_cop_menu_fissi="SELECT menu, SUM(o.quantita) AS n FROM Comande c INNER JOIN Ordini o ON c.tavolo=o.tavolo AND c.indice=o.indice AND c.serata=o.serata INNER JOIN Menu m ON c.menu=m.nome_menu WHERE o.portata='Pane e Coperto' AND m.fisso=1 GROUP BY m.nome_menu";
@@ -99,7 +99,7 @@ if(mysqli_num_rows($res5)>=1){
     } 
 }
 mysqli_free_result($res5);
-$exporter->addRow();
+$exporter->addRow(array());
 $exporter->addRow(array('Menù', 'coperti venduti'));
 $res4=esegui_query($link,$query_cop_menu_fissi);
 if(mysqli_num_rows($res4)>=1){

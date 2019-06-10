@@ -4,7 +4,7 @@ $(document).ready(function(){
 	/* on click on table row, open modal to add menu */
 	table.on('click', 'tbody tr td', function(){
 		/* skip columns with edit /modify functions */
-        if($(this).index() == 4 || $(this).index() == 5){ return 0; }
+        if($(this).index() == 4 || $(this).index() == 5 || $(this).index() == 6){ return 0; }
 		
 		/* check that we are not editing */
 		var modifing = false;

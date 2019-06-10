@@ -198,7 +198,7 @@
                           ?>
                         </div>
                         <input style="margin-top:5px;" id="annotazioni" type="text" class="form-control"  placeholder="Annotazioni">
-                      </div>
+                      </div>                      
                       <div id="totale-parziale-wrapper">
                         <div style="margin-bottom:5px;">
                           <span>Tot. parziale</span><input id="totale-parziale" disabled type="number" class="form-control small num" value="0" placeholder="0">
@@ -208,6 +208,7 @@
                         </div>
                       </div>
                     </div>
+                    <div class="btn-group" data-toggle="buttons"><label class="btn btn-primary btn-xs active"><input type="checkbox" checked onchange="showGlutenFree()"> APRI  GF</label><label class="btn btn-primary btn-xs"><input type="checkbox" onchange="hideGlutenFree()"> CHIUDI GF</label></div>
                     <div id="lista-piatti-menu">
                         <table style="margin-top:20px !important;" class="scroll table table-striped table-bordered table-selected" id="lista-piatti">
                         <thead>

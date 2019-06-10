@@ -13,7 +13,9 @@
               INNER JOIN ComposizioneMenu cm ON cm.portata = p.nome_portata
               INNER JOIN Menu m ON m.nome_menu = cm.menu
               INNER JOIN MenuSerata ms ON ms.menu = m.nome_menu
-              WHERE ms.serata = '".$data_serata."'"
+              WHERE ms.serata = '".$data_serata."' 
+              GROUP BY p.nome_portata
+			  ORDER BY p.id"
               ;
   }
   else if(isset($_POST['data_serata_distinct']) && strlen($_POST['data_serata_distinct'])>0){
@@ -24,7 +26,9 @@
               INNER JOIN ComposizioneMenu cm ON cm.portata = p.nome_portata
               INNER JOIN Menu m ON m.nome_menu = cm.menu
               INNER JOIN MenuSerata ms ON ms.menu = m.nome_menu
-              WHERE ms.serata = '".$data_serata."'"
+              WHERE ms.serata = '".$data_serata."' 
+              GROUP BY p.nome_portata
+			  ORDER BY p.id"
               ;
   }
   else if(isset($_POST['nome_menu']) && strlen($_POST['nome_menu'])>0){

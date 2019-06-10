@@ -92,6 +92,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="generator" content="PSPad editor, www.pspad.com">
   <style type="text/css">
+    @page {margin: 0;}
     @font-face {
       font-family: \'HelveticaNeue\';
       src: url(\'../fonts/Helvetica/HelveticaNeueLt.ttf\') format(\'truetype\');
@@ -556,14 +557,10 @@
                     </div>
                       <div class="info">
                         <!--<h2 class="comanda">Rione Contrastanga<br />Taverna Sette Selle</h2>-->
-                        <!--<text class="info">Comanda n. '.$num_comanda.' Tavolo: '.$tavolo.'/'.$indice.'</text><br />
-                        <text class="standard">del giorno '.date_format(date_create($serata_attuale),"d/m/Y").'</text>-->';
-                        $html_backup_tot.='<p class="totale"><span class="sx">Totale prodotti </span><span class="dx">&#8364; '.$totale.'</span><br/>';
-                        $html_backup_tot.='<span class="sx">Numero soci '.$soci.'<br /> soci con sconto 10%</span><br />';
-                        if ($sconto_manuale>0) {
-                            $html_backup_tot.='<span class="sx">Sconto &#8364; '.$sconto_manuale.'</span><br />';
-                        }
-                        $html_backup_tot.='<br /><span class="sx">Totale Comanda </span><span class="dx">&#8364; '.$totale_fin.'</span>';
+                        <text class="info">Comanda n. '.$num_comanda.' Tavolo: '.$tavolo.'/'.$indice.'</text><br />
+                        <text class="standard">del giorno '.date_format(date_create($serata_attuale),"d/m/Y").'</text>';
+                       
+                        $html_backup_tot.='<br /><span class="sx">Totale  </span><span class="dx">&#8364; '.$totale_fin.'</span>';
                         $html.=$html_backup_tot.'</p>
                       </div>
                     </div>
@@ -581,8 +578,8 @@
                 </div>
                       <div class="info">
                         <!--<h2 class="comanda">Rione Contrastanga<br />Taverna Sette Selle</h2>-->
-                        <!--<text class="info">Comanda n. '.$num_comanda.' Tavolo: '.$tavolo.'/'.$indice.'</text><br />
-                        <text class="standard">del giorno '.date_format(date_create($serata_attuale),"d/m/Y").'</text>-->'
+                        <text class="info">Comanda n. '.$num_comanda.' Tavolo: '.$tavolo.'/'.$indice.'</text><br />
+                        <text class="standard">del giorno '.date_format(date_create($serata_attuale),"d/m/Y").'</text>'
                         .$html_backup_tot.'</p>            
 </body>
 </html>

@@ -87,7 +87,7 @@
 	}
 
 	function connect_mysql_server($ip_address, $db_name){
-		$link = mysqli_connect($ip_address, "user", "furente", $db_name);
+		$link = mysqli_connect($ip_address, "root", "", $db_name);
 
 		if (mysqli_connect_errno()){
 		  	die("Failed to connect to MySQL: " . mysqli_connect_error());
@@ -195,22 +195,23 @@ function begnWith($str, $begnString) {
 }	
 
 $tbls=[
-	/*"serata",
-	"portata",
-	"menu",
-	"menuserata",
-	"responsabili",
-	"zone",
-	"tavoli",
-	"responsabiliserata",
-	"quantitàpiattiserata",
-	"composizionemenu",
-	"comande",
-	"ordini",
-	"materieprime",
-	"composizioneportata",
-	"prenotazioni",*/
-	"utente"
+	"Serata",
+	"Portata",
+	"Menu",
+	"Menuserata",
+	"Responsabili",
+	"Zone",
+	"Tavoli",
+	"Responsabiliserata",
+	"QuantitàPiattiSerata",
+	"Composizionemenu",
+	"Comande",
+	"Ordini",
+	"Prenotazioni",
+	"Utente",
+	"Ricevutefiscali",
+	"Materieprime",
+	"Composizioneportate"
 ];
 
 function execute_multiline_query($sql_, $db){

@@ -183,12 +183,13 @@ var EditableTable = function () {
 
                 var curr = $(nRow);
                 var all = curr.closest('table').find('tr');
-                all.each(function(){
+                all.splice(0,0, aiNew);
+                /*all.each(function(){
                     if($(this) != curr && $(this).hasClass('nuovariga')) oTable.fnDeleteRow($(this)[0]);
                     else restoreRow(oTable, $(this)[0]);
-                });
+                });*/
 
-                oTable.fnSort( [ [ 7, "asc" ] ] );
+                oTable.fnSort( [ [ 0, "asc" ] ] );
 
                 editRow(oTable, nRow, true);
                 nEditing = nRow;
