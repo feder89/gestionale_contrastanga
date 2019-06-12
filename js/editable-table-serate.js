@@ -193,7 +193,7 @@ var EditableTable = function () {
                 oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
                 oTable.fnUpdate('<a class="edit" href="">Modifica</a>', nRow, 4, false);
                 oTable.fnUpdate('<a class="delete" href="">Cancella</a>', nRow, 5, false);
-                oTable.fnUpdate('<a class="backup" href="">Archivia</a>', nRow, 5, false);
+                oTable.fnUpdate('<a class="backup" href="">Archivia</a>', nRow, 6, false);
                 oTable.fnDraw();
             }
 

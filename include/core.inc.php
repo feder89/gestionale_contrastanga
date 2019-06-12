@@ -203,7 +203,7 @@ $tbls=[
 	"Zone",
 	"Tavoli",
 	"Responsabiliserata",
-	"QuantitàPiattiSerata",
+	"Quantitàiattiserata",
 	"Composizionemenu",
 	"Comande",
 	"Ordini",
@@ -211,7 +211,7 @@ $tbls=[
 	"Utente",
 	"Ricevutefiscali",
 	"Materieprime",
-	"Composizioneportate"
+	"Composizioneportata"
 ];
 
 function execute_multiline_query($sql_, $db){

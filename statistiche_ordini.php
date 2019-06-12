@@ -414,7 +414,7 @@
 							}
 						}
 						mysqli_free_result($res_1);
-						$ric_spotQuery="SELECT totale from Ricevutefiscali WHERE tavolo=0";
+						$ric_spotQuery="SELECT totale from Ricevutefiscali WHERE tavolo=0 AND serata='".$date."'";
 						$res_rf=mysqli_query($link, $ric_spotQuery) or die("#error#".mysql_error($link));
 						while ($row_rf = mysqli_fetch_assoc($res_rf)) {
 							$tot_serata_+=$row_rf["totale"];
