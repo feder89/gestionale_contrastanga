@@ -13,13 +13,13 @@
       $link = connetti_mysql();
       $soglia = mysqli_real_escape_string($link, $_POST['soglia']);
 
-      $query = "SELECT * FROM QuantitàPiattiSerata WHERE serata = '$date' AND  quantità < $soglia ORDER BY quantità ASC";
+      $query = "SELECT * FROM QuantitaPiattiSerata WHERE serata = '$date' AND  quantita < $soglia ORDER BY quantita ASC";
       if(!($res = mysqli_query($link, $query))){
           $portate[] = array('error' => "#error#Errore durante l\'operazione");
       } 
       else{
         while ( ($row = mysqli_fetch_assoc($res))){
-          $portate[]=array('nome_portata' => $row['piatto'], 'quantita' => $row['quantità']);
+          $portate[]=array('nome_portata' => $row['piatto'], 'quantita' => $row['quantita']);
         }
       }
 

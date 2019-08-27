@@ -12,7 +12,10 @@
 
         //controlla ultima comanda (ultimo indice)
         $query = "UPDATE Serata SET inizializzata=2 WHERE data = '$date'";
+        $query_programmazioni="TRUNCATE TABLE programmazioneordini";
         if(!mysqli_query($link, $query)){
+            echo '#error#Errore durante l\'operazione';
+        }elseif(!mysqli_query($link, $query_programmazioni)){
             echo '#error#Errore durante l\'operazione';
         }
         else{
