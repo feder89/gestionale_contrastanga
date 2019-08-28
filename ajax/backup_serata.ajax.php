@@ -50,11 +50,18 @@
             if(backup_data_tables($host, $database, $t)){
             	//echo "operazione avvenuta con successo!";
             	$success=true;
+            	/*$query_delete_comande = "DELETE FROM Comande c where (c.serata, c.tavolo, c.indice) NOT IN 
+            	(SELECT rf.serata, rf.tavolo, rf.indice FROM ricevutefiscali as rf)";
+            	$db_conn_=connetti_mysql();
+            	mysqli_query($db_conn_, $query_delete_comande) or die("#error#".mysqli_error($db_conn_));*/
+
             }
         }
 	}
-	
+
+
 	disconnetti_mysql($link);
+	echo $success;
 }
 
 
