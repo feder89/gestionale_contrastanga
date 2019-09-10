@@ -47,7 +47,7 @@
 			
 		}
 		foreach($tbls as $t) {
-            if(backup_data_tables($host, $database, $t)){
+            if(backup_data_tables($host, $database, strtolower($t))){
             	//echo "operazione avvenuta con successo!";
             	$success=true;
             	/*$query_delete_comande = "DELETE FROM Comande c where (c.serata, c.tavolo, c.indice) NOT IN 

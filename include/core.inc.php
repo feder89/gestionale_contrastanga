@@ -55,7 +55,7 @@
 	$page_name=nome_file();
 	
 	function connetti_mysql(){
-		$link = mysqli_connect("127.0.0.1","root","","gestionale_{$_SESSION['quintana']}");
+		$link = mysqli_connect("127.0.0.1","root","furente","gestionale_{$_SESSION['quintana']}");
 
 		// Check connection
 		if (mysqli_connect_errno()){
@@ -71,7 +71,7 @@
 	}
 
 	function connetti_mysql_info_schema(){
-		$link = mysqli_connect("127.0.0.1","root","","information_schema");
+		$link = mysqli_connect("127.0.0.1","root","furente","information_schema");
 
 		// Check connection
 		if (mysqli_connect_errno()){
@@ -87,7 +87,7 @@
 	}
 
 	function connect_mysql_server($ip_address, $db_name){
-		$link = mysqli_connect($ip_address, "root", "", $db_name);
+		$link = mysqli_connect($ip_address, "user", "furente", $db_name);
 
 		if (mysqli_connect_errno()){
 		  	die("Failed to connect to MySQL: " . mysqli_connect_error());
@@ -203,7 +203,7 @@ $tbls=[
 	"Zone",
 	"Tavoli",
 	"Responsabiliserata",
-	"Quantitàiattiserata",
+	"Quantitapiattiserata",
 	"Composizionemenu",
 	"Comande",
 	"Ordini",
