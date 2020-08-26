@@ -55,7 +55,7 @@
 	$page_name=nome_file();
 	
 	function connetti_mysql(){
-		$link = mysqli_connect("127.0.0.1","root","","gestionale_{$_SESSION['quintana']}");
+		$link = mysqli_connect("127.0.0.1","root","furente","gestionale_{$_SESSION['quintana']}");
 
 		// Check connection
 		if (mysqli_connect_errno()){
@@ -71,7 +71,7 @@
 	}
 
 	function connetti_mysql_info_schema(){
-		$link = mysqli_connect("127.0.0.1","root","","information_schema");
+		$link = mysqli_connect("127.0.0.1","root","furente","information_schema");
 
 		// Check connection
 		if (mysqli_connect_errno()){
@@ -195,22 +195,23 @@ function begnWith($str, $begnString) {
 }	
 
 $tbls=[
-	/*"serata",
-	"portata",
-	"menu",
-	"menuserata",
-	"responsabili",
-	"zone",
-	"tavoli",
-	"responsabiliserata",
-	"quantitàpiattiserata",
-	"composizionemenu",
-	"comande",
-	"ordini",
-	"materieprime",
-	"composizioneportata",
-	"prenotazioni",*/
-	"utente"
+	"Serata",
+	"Portata",
+	"Menu",
+	"Menuserata",
+	"Responsabili",
+	"Zone",
+	"Tavoli",
+	"Responsabiliserata",
+	"Quantitapiattiserata",
+	"Composizionemenu",
+	"Comande",
+	"Ordini",
+	"Prenotazioni",
+	"Utente",
+	"Ricevutefiscali",
+	"Materieprime",
+	"Composizioneportata"
 ];
 
 function execute_multiline_query($sql_, $db){

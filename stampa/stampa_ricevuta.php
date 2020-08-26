@@ -91,6 +91,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="generator" content="PSPad editor, www.pspad.com">
   <style type="text/css">
+    @page {margin: 0;}
     @font-face {
       font-family: \'HelveticaNeue\';
       src: url(\'../fonts/Helvetica/HelveticaNeueLt.ttf\') format(\'truetype\');
@@ -99,7 +100,7 @@
     }
     html, body{
       width: 210mm;
-      height: 279mm;
+      height: 265mm;
       font-family: HelveticaNeue;
     }
     th, h2{
@@ -109,13 +110,19 @@
     div.contenitore{
       width: 100%;
       font-family: Helvetica;
-      height: 147.5mm;
+      height: 141mm;
       vertical-align: top;
     }
     div.prodotti{
       float: left;
       width: 118mm;
       padding-top: 44mm;
+      padding-left: 5mm;
+    }
+    div.prodotti2{
+      float: left;
+      width: 118mm;
+      padding-top: 50mm;
       padding-left: 5mm;
     }
     div.info{
@@ -557,7 +564,7 @@
                       </div>
                     </div>
                     <div class="contenitore">
-                    <div class="prodotti">
+                    <div class="prodotti2">
                       <table class="product" border="0">
                           <tr class="header">
                               <th>Prodotto</th>

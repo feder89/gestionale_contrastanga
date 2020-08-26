@@ -5,7 +5,7 @@
 	$tavoli_old=0;
 	$coperti_old=0;
 	$date=ottieni_data_serata_attuale();
-	$query_old = "SELECT * FROM prenotazioni WHERE serata = '$date'";
+	$query_old = "SELECT * FROM Prenotazioni WHERE serata = '$date'";
 	$query;
 	$tavoli;
 	$coperti;
@@ -30,26 +30,26 @@
 		if($exixst){
 			$tavoli+=$tavoli_old;
             $coperti+=$coperti_old;
-            $query="UPDATE prenotazioni SET tavoli=$tavoli, coperti=$coperti WHERE serata = '$date'";
+            $query="UPDATE Prenotazioni SET tavoli=$tavoli, coperti=$coperti WHERE serata = '$date'";
 		}else{
-			$query="INSERT INTO prenotazioni (serata, tavoli, coperti) VALUES ('$date',$tavoli, $coperti)";
+			$query="INSERT INTO Prenotazioni (serata, tavoli, coperti) VALUES ('$date',$tavoli, $coperti)";
 		}
 		
 	}elseif (isset($_POST['tavoli']) && $_POST['tavoli']>0) {
 		$tavoli=$_POST['tavoli'];
 		if($exixst){
 			$tavoli+=$tavoli_old;
-            $query="UPDATE prenotazioni SET tavoli=$tavoli WHERE serata = '$date'";
+            $query="UPDATE Prenotazioni SET tavoli=$tavoli WHERE serata = '$date'";
 		}else{
-			$query="INSERT INTO prenotazioni (serata, tavoli, coperti) VALUES ('$date',$tavoli, 0)";
+			$query="INSERT INTO Prenotazioni (serata, tavoli, coperti) VALUES ('$date',$tavoli, 0)";
 		}
 	}elseif (isset($_POST['coperti']) && $_POST['coperti']>0) {
 		$coperti=$_POST['coperti'];
 		if($exixst){
             $coperti+=$coperti_old;
-            $query="UPDATE prenotazioni SET coperti=$coperti WHERE serata = '$date'";
+            $query="UPDATE Prenotazioni SET coperti=$coperti WHERE serata = '$date'";
 		}else{
-			$query="INSERT INTO prenotazioni (serata, tavoli, coperti) VALUES ('$date',0, $coperti)";
+			$query="INSERT INTO Prenotazioni (serata, tavoli, coperti) VALUES ('$date',0, $coperti)";
 		}
 	}
 	if(strlen($query)>0){

@@ -69,9 +69,7 @@
                         $primi[]=array("p" => $portata, "q" => $quantita);
                         break;
                     case 'antipasto':
-                        
-                          $antipasti[]=array("p" => $portata, "q" => $quantita);
-                        
+                        $antipasti[]=array("p" => $portata, "q" => $quantita);
                         break;
                     case 'bruschette e crostoni':
                         $bruschette[]=array("p" => $portata, "q" => $quantita);
@@ -113,7 +111,7 @@
   <meta name="generator" content="PSPad editor, www.pspad.com">
   <title></title>
   <style type="text/css">
-    @page {size: 210mm 297mm;}
+    @page {size: 210mm 297mm; margin: 0;}
     @font-face {
       font-family: \'HelveticaNeue\';
       src: url(\'../fonts/HelveticaNeueLt.ttf\') format(\'truetype\');
@@ -132,7 +130,7 @@
     }
     div.bevanda{
         width: 125mm;
-        height: 42mm;
+        height: 39mm;
         float: left;
         display: block;
         padding-top: 3mm;
@@ -140,7 +138,7 @@
     }
     div.tagliere{
         width: 66mm;
-        height: 42mm;
+        height: 39mm;
         float: right;
         display: block;
         padding-right: 3mm;
@@ -155,7 +153,7 @@
         padding-top: 3mm;
     }
     div.rect.primo{
-        height: 47mm;
+        height: 46mm;
         padding-top: 3mm;
     }
     div.rect.antipasto{
@@ -230,7 +228,7 @@
     $html.='</div>
       <div class="tagliere">';
       if(!empty($piadine)){
-        $html.='<div style="font-size: 12pt;">[Piadine] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
+        $html.='<div style="font-size: 10pt;">[Crepes] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
         <table class="ordini">
           <tr>
             <th>Prodotto</th>
@@ -241,7 +239,7 @@
           $html.='<tr>
                     <td>'.$new_portata.'</td>
                     <td>'.$value['q'].'</td>
-                  </tr>';          	
+                  </tr>';           
         }
         $html.='</table>';
       }

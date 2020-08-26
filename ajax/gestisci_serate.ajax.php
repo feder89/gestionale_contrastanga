@@ -25,12 +25,14 @@
 		$data = $data[2].'-'.$data[1].'-'.$data[0];
 
 		$query = "INSERT INTO Serata (descrizione, data) VALUES ('${nome}', '${data}')";
-
+		$query_programmazioni="TRUNCATE TABLE programmazioneordini";
 		if(!esegui_query($link, $query)){
 
 			if(($present = esegui_query($link, "SELECT * FROM Serata WHERE data = '${data}'")) && mysqli_num_rows($present)>=1) echo "#error#C'è già una serata il ${_POST['data']}";
 			else echo '#error#Errore durante l\'operazione';
-		} 
+		}elseif(!mysqli_query($link, $query_programmazioni)){
+            echo '#error#Errore durante l\'operazione';
+        } 
 		else echo "Serata \"$nome\" inserita correttamente!";
 
 		disconnetti_mysql($link, NULL);

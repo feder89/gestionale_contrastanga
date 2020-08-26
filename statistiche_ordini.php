@@ -11,21 +11,28 @@
       </header>
       <div class="panel-body">
           <div class="adv-table editable-table ">
-              <!--<div class="clearfix">
-                  <div class="btn-group">
-                      <button id="editable-sample_new" class="btn green">
-                          Aggiungi <i class="fa fa-plus"></i>
-                      </button>
-                  </div>
-                  <div class="btn-group pull-right">
-                      <button class="btn dropdown-toggle" data-toggle="dropdown">Strumenti <i class="fa fa-angle-down"></i>
-                      </button>
-                      <ul class="dropdown-menu pull-right">
-                          <li><a href="#">Stampa</a></li>
-                          <li><a href="#">Salva come PDF</a></li>
-                      </ul>
-                  </div>
-              </div>-->
+              <script type="text/javascript">
+              	function stampaIncassi(totSerata, daIncassare, nonIncassato, totRicevute){
+				  $.post('stampa/stampa_incassi.php', {
+				         	tot_serata: totSerata,
+				          	da_incassare: daIncassare,
+				          	non_incassato: nonIncassato,
+				          	tot_ricevute: totRicevute
+				        }, function(result) {
+				          newpage = result;
+				          /*myWindow = window.open('javascript: document.write(window.opener.newpage);', '_blank','height=500, width=800, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
+				          myWindow.document.close();
+				          contoInviato(tavolo, indice);
+				          myWindow.print();
+				          myWindow.close();*/
+				          var myWindow = window.open("", "myWindow5", 'height=500, width=800, left=300, top=100, resizable=yes, scrollbars=yes, toolbar=yes, menubar=no, location=no, directories=no, status=yes');
+				          myWindow.document.write(newpage);
+				          myWindow.document.close();
+				          myWindow.print();
+				          myWindow.close();    
+				    });
+				  }
+              </script>
               <div class="space15"></div>
                   
                   <table class="table table-striped table-hover table-bordered portate" id="editable-sample">
@@ -63,7 +70,7 @@
               mysqli_free_result($res2);
 						$query1="SELECT * FROM Comande c
 								  INNER JOIN Menu m ON c.menu=m.nome_menu
-								  WHERE serata='$date' AND (c.serata, c.tavolo, c.indice) NOT in (SELECT serata,tavolo,indice FROM ricevutefiscali)";
+								  WHERE serata='$date' AND (c.serata, c.tavolo, c.indice) NOT in (SELECT serata,tavolo,indice FROM Ricevutefiscali)";
 						$sconto_manuale=0;
 						$coperti=0;
 						$tot_serata=0;
@@ -239,7 +246,7 @@
 						}
 						$rf_query="SELECT * FROM Comande c
 								  INNER JOIN Menu m ON c.menu=m.nome_menu
-								  WHERE serata='$date' AND (c.serata, c.tavolo, c.indice) in (SELECT serata,tavolo,indice FROM ricevutefiscali)";
+								  WHERE serata='$date' AND (c.serata, c.tavolo, c.indice) in (SELECT serata,tavolo,indice FROM Ricevutefiscali)";
 						$sconto_manuale_=0;
 						$coperti_=0;
 						$tot_serata_=0;
@@ -390,7 +397,7 @@
 									}
 									$totale=$totale+$tot_acqua_da_pagare+$tot_vino_da_pagare;
 									//$totale=number_format($totale, 2, '.', ' ');
-									$totale_sconto_soci=($totale/$coperti)*(0.1*$soci_);
+									$totale_sconto_soci=($totale/$coperti_)*(0.1*$soci_);
 									$totale_fin=$totale-$totale_sconto_soci-$sconto_manuale_;
 
 									$tot_serata_ += $totale_fin;
@@ -406,6 +413,12 @@
 								}
 							}
 						}
+						mysqli_free_result($res_1);
+						$ric_spotQuery="SELECT totale from Ricevutefiscali WHERE tavolo=0 AND serata='".$date."'";
+						$res_rf=mysqli_query($link, $ric_spotQuery) or die("#error#".mysql_error($link));
+						while ($row_rf = mysqli_fetch_assoc($res_rf)) {
+							$tot_serata_+=$row_rf["totale"];
+						}
 						$tot_serata_ = number_format($tot_serata_, 2, '.', ' ');
 						echo '<br/><br/> Totale incassato: € '.$tot_serata.'<br/>
 								Totale da incassare: € '.$tot_serata_da_incassare.'<br/>
@@ -413,7 +426,7 @@
 
 						echo '<br /><br />Totale incassato con Ricevute Fiscali: € '.$tot_serata_.'<br/>';
 
-						$query_old = "SELECT * FROM prenotazioni WHERE serata = '$date'";
+						$query_old = "SELECT * FROM Prenotazioni WHERE serata = '$date'";
 						$tavoli=0;
 						$coperti=0;
 					    if(!($res_p =esegui_query($link, $query_old))){
@@ -433,7 +446,15 @@
 						}	
 						echo '<br/><br/> Numero tavoli preontati: '.$tavoli.'<br/>
 								Numero coperti preontati: '.$coperti;
+
                       disconnetti_mysql($link);
+                      $stringTotaleSerata="'".$tot_serata."'";
+                      $stringtot_serata_da_incassare="'".$tot_serata_da_incassare."'";
+                      $stringtot_serata_non_incassato="'".$tot_serata_non_incassato."'";
+                      $stringtot_serata_="'".$tot_serata_."'";
+                      echo '<br/><br/><p>
+          	<button type="button" class="btn btn-success" onclick="stampaIncassi('.$stringTotaleSerata.','.$stringtot_serata_da_incassare.','.$stringtot_serata_non_incassato.','.$stringtot_serata_.')"><i class="fa fa-print" aria-hidden="true"></i> Stampa incassi</button>
+          </p>';
                   ?> 
                   
           </div>

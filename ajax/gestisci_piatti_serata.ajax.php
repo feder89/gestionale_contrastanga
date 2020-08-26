@@ -7,7 +7,7 @@
 		$portata = mysqli_real_escape_string($link, $_POST['portata']);
 		$serata = mysqli_real_escape_string($link, $_POST['serata']);
   							
-	  	$query = "DELETE FROM QuantitàPiattiSerata WHERE piatto = '$portata' AND serata = '$serata'";
+	  	$query = "DELETE FROM QuantitaPiattiSerata WHERE piatto = '$portata' AND serata = '$serata'";
 
 	  	if(esegui_query($link, $query)) echo "Portata \"$portata\" cancellata correttamente dalla serata odierna!";
 	  	else echo "#error#Errore durante l'operazione";
@@ -21,12 +21,12 @@
 		$quantita = mysqli_real_escape_string($link, $_POST['quantita']);
 		$serata = mysqli_real_escape_string($link, $_POST['serata']);
 
-		$query = "INSERT INTO QuantitàPiattiSerata (serata, piatto, quantità) VALUES ('$serata', '$portata', $quantita)";
+		$query = "INSERT INTO QuantitaPiattiSerata (serata, piatto, quantita) VALUES ('$serata', '$portata', $quantita)";
 
 		if(!esegui_query($link, $query)){
 
-			if(($present = esegui_query($link, "SELECT * FROM QuantitàPiattiSerata WHERE piatto = '$portata' AND serata = '$serata'")) && mysqli_num_rows($present)>=1) echo "#error#Piatto '$portata' già impostato per la serata odierna";
-			else echo '#error#Errore durante l\'operazione';
+			if(($present = esegui_query($link, "SELECT * FROM QuantitaPiattiSerata WHERE piatto = '$portata' AND serata = '$serata'")) && mysqli_num_rows($present)>=1) echo "#error#Piatto '$portata' già impostato per la serata odierna";
+			else echo '#error#Errore durante l\'operazione'.mysqli_error($link);
 		} 
 		else echo "Piatto '$portata' impostato correttamente!";
 
@@ -39,9 +39,9 @@
 		$quantita = mysqli_real_escape_string($link, $_POST['quantita']);
 		$serata = mysqli_real_escape_string($link, $_POST['serata']);
 
-		$query = "UPDATE QuantitàPiattiSerata SET quantità='$quantita' WHERE piatto = '$portata' AND serata = '$serata'";
+		$query = "UPDATE QuantitaPiattiSerata SET quantita='$quantita' WHERE piatto = '$portata' AND serata = '$serata'";
 
-		if(!esegui_query($link, $query)) echo '#error#Errore durante l\'operazione';
+		if(!esegui_query($link, $query)) echo '#error#Errore durante l\'operazione'.mysqli_error($link);
 		else echo "Piatto '$portata' aggiornato correttamente!";
 
 		disconnetti_mysql($link, NULL);
@@ -61,13 +61,13 @@
 				  WHERE ms.serata = '".$serata."' AND p.nome_portata NOT IN(
 						SELECT p2.nome_portata
 				  		FROM Portata p2
-				  		INNER JOIN QuantitàPiattiSerata q ON q.piatto = p2.nome_portata 
+				  		INNER JOIN QuantitaPiattiSerata q ON q.piatto = p2.nome_portata 
 				  		WHERE q.serata = '".$serata."')";
 
-		if(!($res=esegui_query($link, $query))) echo '#error#Errore durante l\'operazione';
+		if(!($res=esegui_query($link, $query))) echo '#error#Errore durante l\'operazione'.mysqli_error($link);
 		else {
 			if(mysqli_num_rows($res) > 0){ 
-				$insert_q = "INSERT INTO QuantitàPiattiSerata(`serata`, `piatto`, `quantità`) VALUES ";
+				$insert_q = "INSERT INTO QuantitaPiattiSerata(`serata`, `piatto`, `quantita`) VALUES ";
 				$c = 0;
 				while($row = mysqli_fetch_assoc($res)){
 					if($c==0) $insert_q .= "('$serata','".$row['nome_portata']."', $default)";
@@ -77,7 +77,7 @@
 				mysqli_free_result($res);
 
 				if(!esegui_query($link, $insert_q)){ 
-					echo '#error#Errore durante l\'operazione';
+					echo '#error#Errore durante l\'operazione'.mysqli_error($link).mysqli_error($link);
 					disconnetti_mysql($link, NULL);
 					die();
 				}

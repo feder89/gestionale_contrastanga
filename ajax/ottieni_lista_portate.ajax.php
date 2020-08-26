@@ -13,7 +13,9 @@
               INNER JOIN ComposizioneMenu cm ON cm.portata = p.nome_portata
               INNER JOIN Menu m ON m.nome_menu = cm.menu
               INNER JOIN MenuSerata ms ON ms.menu = m.nome_menu
-              WHERE ms.serata = '".$data_serata."'"
+              WHERE ms.serata = '".$data_serata."' 
+              GROUP BY p.nome_portata
+			  ORDER BY p.id"
               ;
   }
   else if(isset($_POST['data_serata_distinct']) && strlen($_POST['data_serata_distinct'])>0){
@@ -24,7 +26,9 @@
               INNER JOIN ComposizioneMenu cm ON cm.portata = p.nome_portata
               INNER JOIN Menu m ON m.nome_menu = cm.menu
               INNER JOIN MenuSerata ms ON ms.menu = m.nome_menu
-              WHERE ms.serata = '".$data_serata."'"
+              WHERE ms.serata = '".$data_serata."'
+              GROUP BY p.nome_portata
+			  ORDER BY p.id"
               ;
   }
   else if(isset($_POST['nome_menu']) && strlen($_POST['nome_menu'])>0){
@@ -68,10 +72,10 @@
                     $portate[]=array('error' => '#error#Errore durante l\'acquisizione della data');
                 }
                 else{
-                    $query_port = "SELECT * FROM QuantitàPiattiSerata WHERE serata='$date' AND piatto = '".$row['nome_portata']."'";
+                    $query_port = "SELECT * FROM QuantitaPiattiSerata WHERE serata='$date' AND piatto = '".$row['nome_portata']."'";
                     if( ($res2 = esegui_query($link, $query_port))){ 
                         $row2 = mysqli_fetch_assoc($res2);
-                        $portate[]=array('nome_portata' => $row['nome_portata'], 'categoria' => $row['categoria'], 'prezzo_finale' => $row['prezzo_finale'], 'quantita_rimanente' => $row2['quantità']);
+                        $portate[]=array('nome_portata' => $row['nome_portata'], 'categoria' => $row['categoria'], 'prezzo_finale' => $row['prezzo_finale'], 'quantita_rimanente' => $row2['quantita']);
                     }
                     else{
                         /* error */

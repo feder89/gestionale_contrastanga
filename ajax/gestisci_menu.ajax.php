@@ -17,13 +17,17 @@
 
 		$link = connetti_mysql();
 		$nome = mysqli_real_escape_string($link, $_POST['nome']);
+		$max="SELECT max(id) AS max_id FROM menu";
+		$res_max=mysqli_query($link, $max) or die("#error#".mysqli_error($link));
+		$row_max = mysqli_fetch_array($res_max);
+		$id_max= $row_max["max_id"] + 1;
 
 		if(isset($_POST['fix']) && $_POST['fix']==1 && is_numeric($_POST['price'])){
 			$_POST['fix'] = mysqli_real_escape_string($link, $_POST['fix']);
 			$_POST['price'] = mysqli_real_escape_string($link, $_POST['price']);
-			$query = "INSERT INTO Menu (nome_menu, fisso, prezzo_fisso) VALUES ('$nome', ${_POST['fix']}, ${_POST['price']})";
+			$query = "INSERT INTO Menu (id, nome_menu, fisso, prezzo_fisso) VALUES (".$id_max.",'$nome', ${_POST['fix']}, ${_POST['price']})";
 		} else {
-			$query = "INSERT INTO Menu (nome_menu) VALUES ('$nome')";
+			$query = "INSERT INTO Menu (id, nome_menu) VALUES (".$id_max.",'$nome')";
 		}
 
 		if(!esegui_query($link, $query)){

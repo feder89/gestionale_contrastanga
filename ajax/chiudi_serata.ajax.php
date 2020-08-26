@@ -12,6 +12,7 @@
 
         //controlla ultima comanda (ultimo indice)
         $query = "UPDATE Serata SET inizializzata=2 WHERE data = '$date'";
+        
         if(!mysqli_query($link, $query)){
             echo '#error#Errore durante l\'operazione';
         }

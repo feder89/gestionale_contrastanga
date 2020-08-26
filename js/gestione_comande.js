@@ -2093,3 +2093,21 @@ function stampaFiscale(tavolo, indice){
         	myWindow.close();    
     });
 }
+
+function showGlutenFree(){
+	var rows =$('#lista-piatti').find('> tbody > tr');
+	rows.each(function(e){
+		if($(this).children('td:eq(1)').text().startsWith('GF')){
+			$(this).show();
+		}
+	});
+}
+
+function hideGlutenFree(){
+	var rows =$('#lista-piatti').find('> tbody > tr');
+	rows.each(function(e){
+		if($(this).children('td:eq(1)').text().startsWith('GF')) {
+			$(this).hide();
+		}
+	});
+}

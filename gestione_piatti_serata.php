@@ -59,13 +59,13 @@
                       $now=time();
                       $date=date('Y-m-d', $now);
             
-                      $query = "SELECT * FROM QuantitàPiattiSerata WHERE serata='$date'";
+                      $query = "SELECT * FROM QuantitaPiattiSerata WHERE serata='$date'";
                       $res = esegui_query($link, $query);
 
                       while ( $row = mysqli_fetch_assoc($res)){
                          echo '<tr>
                               <td>'.$row['piatto'].'</td>
-                              <td>'.$row['quantità'].'</td>
+                              <td>'.$row['quantita'].'</td>
                               <td>'.date( 'd/m/Y H:i:s', strtotime($row['data_creazione']) ).'</td>
                               <td>'.date( 'd/m/Y H:i:s', strtotime($row['data_aggiornamento']) ).'</td>
                               <td><a class="edit" href="javascript:;">Modifica</a></td>

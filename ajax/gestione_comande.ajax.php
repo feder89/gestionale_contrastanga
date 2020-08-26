@@ -77,7 +77,7 @@
                 $quantita = mysqli_real_escape_string($link, $ordine[1]);
 
                 $query_ins = "INSERT INTO Ordini (quantita, serata, tavolo, indice, portata) VALUES ($quantita, '$date', $tavolo, $nuovo_indice, '$portata')";
-                $query_quant = "UPDATE QuantitàPiattiSerata SET quantità = GREATEST(0, quantità - $quantita) WHERE serata='$date' AND piatto = '$portata'";
+                $query_quant = "UPDATE QuantitaPiattiSerata SET quantita = GREATEST(0, quantita - $quantita) WHERE serata='$date' AND piatto = '$portata'";
                 if(!esegui_query($link, $query_ins) || !esegui_query($link, $query_quant)){
                     echo '#error#Errore durante l\'operazione';
                     mysqli_rollback($link);
@@ -160,7 +160,7 @@
                     if($quantita>=0){
                         //gia esiste, riduci e 
                         $query_update = "UPDATE Ordini SET quantita = GREATEST(0, quantita + $quantita) WHERE serata = '$date' AND tavolo = $tavolo AND indice = $indice AND portata = '$portata'";
-                        $query_update_quant = "UPDATE QuantitàPiattiSerata SET quantità = GREATEST(0, quantità - $quantita) WHERE serata='$date' AND piatto = '$portata'";
+                        $query_update_quant = "UPDATE QuantitaPiattiSerata SET quantita = GREATEST(0, quantita - $quantita) WHERE serata='$date' AND piatto = '$portata'";
                         $query_del_zero = "DELETE FROM Ordini WHERE quantita = 0 AND serata = '$date' AND tavolo = $tavolo AND indice = $indice";
                         if(!esegui_query($link, $query_update) || !esegui_query($link, $query_del_zero) || !esegui_query($link, $query_update_quant)){
                             echo '#error#Errore durante l\'operazione';
@@ -172,7 +172,7 @@
                     else{
                         $query_update = "UPDATE Ordini SET quantita = GREATEST(0, quantita + $quantita) WHERE serata = '$date' AND tavolo = $tavolo AND indice = $indice AND portata = '$portata'";
                         //$query_set_var = "SET @quantita_reale := (SELECT quantita FROM Ordini WHERE serata = '$date' AND tavolo = $tavolo AND indice = $indice AND portata = '$portata')";
-                        $query_update_quant = "UPDATE QuantitàPiattiSerata SET quantità = GREATEST(0, quantità + LEAST(ABS($quantita), (
+                        $query_update_quant = "UPDATE QuantitaPiattiSerata SET quantita = GREATEST(0, quantita + LEAST(ABS($quantita), (
                                                                                                                                                 SELECT quantita 
                                                                                                                                                 FROM Ordini 
                                                                                                                                                 WHERE serata = '$date' AND tavolo = $tavolo AND indice = $indice AND portata = '$portata'
@@ -193,7 +193,7 @@
                     //non esiste, inserisci
                     if($quantita>0){
                         $query_ins = "INSERT INTO Ordini (quantita, serata, tavolo, indice, portata) VALUES ($quantita, '$date', $tavolo, $indice, '$portata')";
-                        $query_update_quant = "UPDATE QuantitàPiattiSerata SET quantità = GREATEST(0, quantità - $quantita) WHERE serata='$date' AND piatto = '$portata'";
+                        $query_update_quant = "UPDATE QuantitaPiattiSerata SET quantita = GREATEST(0, quantita - $quantita) WHERE serata='$date' AND piatto = '$portata'";
                         if(!esegui_query($link, $query_ins) || !esegui_query($link, $query_update_quant)){
                             echo '#error#Errore durante l\'operazione';
                             mysqli_rollback($link);

@@ -58,6 +58,12 @@
           else if($page_name=='statistiche_ordini.php'){
               echo 'Statistiche Serata';
           }
+          else if($page_name=='crea-ricevuta.php'){
+              echo 'Crea Ricevuta';
+          }
+          else if($page_name=='visualizza_ricevute.php'){
+              echo 'Lista Ricevute';
+          }
           else {
               echo 'Gestionale Contrastanga';
           }
@@ -220,7 +226,9 @@
                           <li <?php if($page_name == 'gestione_responsabili.php') echo 'class="active"';?>><a href="gestione_responsabili.php">Gestione Responsabili</a></li>
                           <li <?php if($page_name == 'gestione_zone.php') echo 'class="active"';?>><a href="gestione_zone.php">Gestione Zone</a></li>              
                           <li <?php if($page_name == 'gestione_tavoli.php') echo 'class="active"';?>><a href="gestione_tavoli.php">Gestione Tavoli</a></li>
-                          <li <?php if($page_name == 'statistiche_ordini.php') echo 'class="active"';?>><a href="statistiche_ordini.php">Statistiche Serata</a></li>                 
+                          <li <?php if($page_name == 'statistiche_ordini.php') echo 'class="active"';?>><a href="statistiche_ordini.php">Statistiche Serata</a></li>
+                          <li <?php if($page_name == 'crea-ricevuta.php') echo 'class="active"';?>><a href="crea-ricevuta.php">Crea Ricevuta</a></li>                                  
+                          <li <?php if($page_name == 'visualizza_ricevute.php') echo 'class="active"';?>><a href="visualizza_ricevute.php">Lista Ricevute</a></li>                                  
                       </ul>
                   </li>
                   <!--multi level menu end-->
