@@ -69,16 +69,14 @@
                         $primi[]=array("p" => $portata, "q" => $quantita);
                         break;
                     case 'antipasto':
-                        if(strncmp($portata, 'Tagliere', 8)===0){
-                          $taglieri[]=array("p" => $portata, "q" => $quantita);
-                        }else{
+                        
                           $antipasti[]=array("p" => $portata, "q" => $quantita);
-                        }
+                        
                         break;
                     case 'bruschette e crostoni':
                         $bruschette[]=array("p" => $portata, "q" => $quantita);
                         break;
-                    case 'piadina':
+                    case 'cantinetta':
                         $piadine[]=array("p" => $portata, "q" => $quantita);
                         break;
                 }
@@ -133,16 +131,16 @@
         padding-left: 10mm;
     }
     div.bevanda{
-        width: 145mm;
-        height: 39mm;
+        width: 125mm;
+        height: 42mm;
         float: left;
         display: block;
         padding-top: 3mm;
         padding-right: 3mm;
     }
     div.tagliere{
-        width: 56mm;
-        height: 39mm;
+        width: 66mm;
+        height: 42mm;
         float: right;
         display: block;
         padding-right: 3mm;
@@ -157,7 +155,7 @@
         padding-top: 3mm;
     }
     div.rect.primo{
-        height: 46mm;
+        height: 47mm;
         padding-top: 3mm;
     }
     div.rect.antipasto{
@@ -231,19 +229,19 @@
 
     $html.='</div>
       <div class="tagliere">';
-      if(!empty($taglieri)){
-        $html.='<div style="font-size: 12pt;">[Tagliere] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
+      if(!empty($piadine)){
+        $html.='<div style="font-size: 12pt;">[Piadine] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
         <table class="ordini">
           <tr>
             <th>Prodotto</th>
             <th>Quantit&agrave;</th>
           </tr>';
-        foreach ($taglieri as $key=>$value) {
+        foreach ($piadine as $key=>$value) {
         $new_portata = preg_replace('/ FISSO$/', '', $value['p']);
           $html.='<tr>
                     <td>'.$new_portata.'</td>
                     <td>'.$value['q'].'</td>
-                  </tr>';           
+                  </tr>';          	
         }
         $html.='</table>';
       }
@@ -347,7 +345,7 @@
       $html.='</div>
       <div class="piadine">';
       if(!empty($piadine)){
-        $html.='<div style="font-size: 12pt;">[Piadine] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
+        $html.='<div style="font-size: 12pt;">[Bruschette e Crostoni] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
         <table class="ordini">
           <tr>
             <th>Prodotto</th>
@@ -360,8 +358,7 @@
                     <td>'.$value['q'].'</td>
                   </tr>';          	
         }
-        $html.='</table>';
-      }
+        $html.='</table>';  
         
       $html.='</div>
       </div>
