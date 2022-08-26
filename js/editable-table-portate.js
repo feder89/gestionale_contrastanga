@@ -35,6 +35,7 @@ var EditableTable = function () {
                                         '<option value="contorno">Contorno</option>'+
                                         '<option value="dolce">Dolce</option>'+
                                         '<option value="bevanda">Bevanda</option>'+
+										'<option value="cantinetta" '+(aData[1].toLowerCase() == 'cantinetta' ? 'selected' : '')+'>Cantinetta</option>'+
                                     '</select>';
                 jqTds[2].innerHTML = '<input step="any" min="0.00" max="99.99" type="number" class="form-control small num"  value="' + aData[2] + '">';
                 jqTds[3].innerHTML = '<input disabled type="text" class="form-control small" value="' + aData[3] + '">';
@@ -66,6 +67,7 @@ var EditableTable = function () {
                                         '<option value="contorno" '+(aData[1].toLowerCase() == 'contorno' ? 'selected' : '')+'>Contorno</option>'+
                                         '<option value="dolce" '+(aData[1].toLowerCase() == 'dolce' ? 'selected' : '')+'>Dolce</option>'+
                                         '<option value="bevanda" '+(aData[1].toLowerCase() == 'bevanda' ? 'selected' : '')+'>Bevanda</option>'+
+                                        '<option value="cantinetta" '+(aData[1].toLowerCase() == 'cantinetta' ? 'selected' : '')+'>Cantinetta</option>'+
                                     '</select>';
                 jqTds[2].innerHTML = '<input step="any" min="0.00" max="99.99" type="number" class="form-control small num"  value="' + parseInt(aData[2]) + '">';
                 jqTds[3].innerHTML = '<input disabled type="text" class="form-control small" value="' + aData[3] + '">';

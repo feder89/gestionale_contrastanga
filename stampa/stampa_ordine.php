@@ -74,7 +74,7 @@
                     case 'bruschette e crostoni':
                         $bruschette[]=array("p" => $portata, "q" => $quantita);
                         break;
-                    case 'piadina':
+                    case 'cantinetta':
                         $piadine[]=array("p" => $portata, "q" => $quantita);
                         break;
                 }
@@ -130,7 +130,7 @@
     }
     div.bevanda{
         width: 125mm;
-        height: 39mm;
+        height: 55mm;
         float: left;
         display: block;
         padding-top: 3mm;
@@ -161,8 +161,8 @@
         padding-top: 3mm;
     }
     div.bruschette{
-        width: 99mm;
-        height: 55mm;
+        width: 80mm;
+        height: 39mm;
         float: left;
         display: block;
         padding-top: 3mm;
@@ -173,7 +173,7 @@
     }
     div.piadine{
         width: 102mm;
-        height: 55mm;
+        height: 39mm;
         float: right;
         display: block;
         padding-right: 3mm;
@@ -227,22 +227,7 @@
 
     $html.='</div>
       <div class="tagliere">';
-      if(!empty($piadine)){
-        $html.='<div style="font-size: 10pt;">[Crepes] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
-        <table class="ordini">
-          <tr>
-            <th>Prodotto</th>
-            <th>Quantit&agrave;</th>
-          </tr>';
-        foreach ($piadine as $key=>$value) {
-        $new_portata = preg_replace('/ FISSO$/', '', $value['p']);
-          $html.='<tr>
-                    <td>'.$new_portata.'</td>
-                    <td>'.$value['q'].'</td>
-                  </tr>';           
-        }
-        $html.='</table>';
-      }
+      
         
     $html.='</div></div>
     <div class="rect dolce">';
@@ -342,7 +327,22 @@
         
       $html.='</div>
       <div class="piadine">';
-      
+      if(!empty($piadine)){
+        $html.='<div style="font-size: 10pt;">[Cantinetta] '.date_format(date_create($serata_attuale),"d/m/Y").' Tav. '.$tavolo.' Comanda '.$tavolo.'/'.$nuovo_indice.' '.$responsabile.'</div>
+        <table class="ordini">
+          <tr>
+            <th>Prodotto</th>
+            <th>Quantit&agrave;</th>
+          </tr>';
+        foreach ($piadine as $key=>$value) {
+        $new_portata = preg_replace('/ FISSO$/', '', $value['p']);
+          $html.='<tr>
+                    <td>'.$new_portata.'</td>
+                    <td>'.$value['q'].'</td>
+                  </tr>';           
+        }
+        $html.='</table>';
+      }
         
       $html.='</div>
       </div>
