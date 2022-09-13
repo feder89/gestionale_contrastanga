@@ -25,7 +25,7 @@ if(!($res1=esegui_query($link,$query_serata))){
     //$exporter->addRow("Portata", $serate, "Totale piatti venduti", "Prezzo");
     $exporter->addRow($testa);
 }
-$query_portate = "SELECT * FROM Portata p ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda'), p.nome_portata";
+$query_portate = "SELECT * FROM Portata p ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda', 'cantinetta'), p.nome_portata";
 if(!($res3=esegui_query($link, $query_portate))){
     $exporter->addRow("errore");
 }else{
@@ -39,7 +39,7 @@ if(!($res3=esegui_query($link, $query_portate))){
             		  INNER JOIN Portata p
             		  ON p.nome_portata=o.portata
             		  GROUP BY o.portata
-            		  ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda'), p.nome_portata";
+            		  ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda', 'cantinetta'), p.nome_portata";
 if(!($res=esegui_query($link,$query_ordini_totale))){
     $exporter->addRow("errore");
 }

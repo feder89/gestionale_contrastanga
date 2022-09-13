@@ -17,7 +17,7 @@
             INNER JOIN Portata p
             ON p.nome_portata=o.portata
             WHERE tavolo=$tavolo AND indice=$indice AND serata='$serata_attuale'
-            ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda')";
+            ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda', 'cantinetta')";
     
     $link=connetti_mysql();
     if(!($res=esegui_query($link,$query))){
@@ -402,16 +402,16 @@
                           while($row=mysqli_fetch_assoc($res)){
                                 $portata=$row['portata'];
                                 $quantita=$row['quantita'];
-                                $prezzo=number_format($row['prezzo_finale'], 2, '.', ' ');
+                                $prezzo=number_format($row['prezzo_finale'], 2, '.', '');
                                 $prezzoquantita=$row['prezzo_finale']*$row['quantita'];
-                                $prezzoquantita=number_format($prezzoquantita, 2, '.', ' ');
-                                
+                                $prezzoquantita=number_format($prezzoquantita, 2, '.', '');
+                                $totale = $totale + ($row['prezzo_finale']*$row['quantita']);    
+								$totale=number_format($totale, 2, '.', '');								
                                 $html_backup.='<tr><td>'.$portata.'</td>';
                                 $html_backup.='<td>' .$quantita.'</td>';
                                 $html_backup.='<td>&#8364; ' .$prezzo.'</td>';
                                 $html_backup.='<td>&#8364; ' .$prezzoquantita.'</td></tr>';
-                                $totale = $totale + ($row['prezzo_finale']*$row['quantita']);
-                                $totale=number_format($totale, 2, '.', ' ');
+
                               if($row['portata'] == "Pane e Coperto"){
                                 $coperti=$row['quantita'];
                               }        
@@ -438,7 +438,7 @@
                                       $acqua_da_pagare=$acqua_ordinata-$acqua_compresa;
                                       if( $acqua_da_pagare >= 1 ){
                                           $tot_tmp = $row['prezzo_finale']*$acqua_da_pagare;
-                                          $prezzo_ac=number_format($row['prezzo_finale'], 2, '.', ' ');
+                                          $prezzo_ac=number_format($row['prezzo_finale'], 2, '.', '');
                                           $acqua[]=array('tipo' => $row['portata'], 'num' => $acqua_da_pagare, 'prezzo' => $prezzo_ac, 'prezzo_fin' => number_format($tot_tmp, 2, '.', ' '));
                                       } 
                                     }                 
@@ -454,14 +454,14 @@
                                         }
                                         if( $acqua_da_pagare >= 1 ){
                                             $tot_tmp = $row['prezzo_finale']*$acqua_da_pagare;
-                                            $prezzo_ac=number_format($row['prezzo_finale'], 2, '.', ' ');
+                                            $prezzo_ac=number_format($row['prezzo_finale'], 2, '.', '');
                                             $acqua[]=array('tipo' => $row['portata'], 'num' => $acqua_da_pagare, 'prezzo' => $prezzo_ac, 'prezzo_fin' => number_format($tot_tmp, 2, '.', ' '));
                                         }
                                         $acqua_ordinata+=$quant;
                                       }
                                       else {
                                         $tot_tmp = $row['prezzo_finale']*$quant;
-                                        $prezzo_ac=number_format($row['prezzo_finale'], 2, '.', ' ');
+                                        $prezzo_ac=number_format($row['prezzo_finale'], 2, '.', '');
                                         $acqua[]=array('tipo' => $row['portata'], 'num' => $quant, 'prezzo' => $prezzo_ac, 'prezzo_fin' => number_format($tot_tmp, 2, '.', ' '));
                                       }
                                     }
@@ -474,7 +474,7 @@
                                     $vino_da_pagare=$vino_ordinato-$vino_compreso;
                                     if( $vino_da_pagare >= 1 ){
                                         $tot_tmp = $row['prezzo_finale']*$vino_da_pagare;
-                                        $prezzo_vi=number_format($row['prezzo_finale'], 2, '.', ' ');
+                                        $prezzo_vi=number_format($row['prezzo_finale'], 2, '.', '');
                                         //$prezzoquantita_vi=$row['prezzo_finale']*($row['quantita']+$vino_da_pagare);
                                         //$prezzoquantita_vi=number_format($prezzoquantita_vi, 2, '.', ' ');
                                         $vino[]=array('tipo' => $row['portata'], 'num' => $vino_da_pagare, 'prezzo' => $prezzo_vi, 'prezzo_fin' => number_format($tot_tmp, 2, '.', ' '));
@@ -491,14 +491,14 @@
                                       }
                                       if( $vino_da_pagare >= 1 ){
                                         $tot_tmp = $row['prezzo_finale']*$vino_da_pagare;
-                                        $prezzo_vi=number_format($row['prezzo_finale'], 2, '.', ' ');
+                                        $prezzo_vi=number_format($row['prezzo_finale'], 2, '.', '');
                                         $vino[]=array('tipo' => $row['portata'], 'num' => $vino_da_pagare, 'prezzo' => $prezzo_vi, 'prezzo_fin' => number_format($tot_tmp, 2, '.', ' '));
                                       }
                                       $vino_ordinato+=$quant;
                                     }
                                     else {
                                         $tot_tmp = $row['prezzo_finale']*$quant;
-                                        $prezzo_ac=number_format($row['prezzo_finale'], 2, '.', ' ');
+                                        $prezzo_ac=number_format($row['prezzo_finale'], 2, '.', '');
                                         $acqua[]=array('tipo' => $row['portata'], 'num' => $quant, 'prezzo' => $prezzo_ac, 'prezzo_fin' => number_format($tot_tmp, 2, '.', ' '));
                                       }
                                   }

@@ -40,7 +40,7 @@ if(!($res=esegui_query($link,$query))){
             INNER JOIN Portata p
             ON p.nome_portata=o.portata
             WHERE tavolo=".$row['tavolo']." AND indice=".$row['indice']." AND serata='$date'
-            ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda')";
+            ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda', 'cantinetta')";
 		$exporter->addRow(array("Serata: ".date_format(date_create($date),"d-m-Y"), (!is_null($row['num_comanda']) ? "Num. Comanda: ".$row['num_comanda'] : "Num. Comanda: -"), "comanda: ".$row['tavolo']."/".$row['indice'], "Menu: ".$row['menu']));  
 		if(!($res1=esegui_query($link,$query_ordini))){
 		    //echo '#error#Errore durante la stampa2';
@@ -217,7 +217,7 @@ $query_ordini_serata="SELECT o.portata, p.categoria, SUM(o.quantita) AS num_port
             		  ON p.nome_portata=o.portata
             		  WHERE serata='$date'
             		  GROUP BY o.portata
-            		  ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda'), p.nome_portata";
+            		  ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda', 'cantinetta'), p.nome_portata";
 if(!($res=esegui_query($link,$query_ordini_serata))){
     $exporter->addRow("errore");
 }
