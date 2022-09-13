@@ -55,7 +55,7 @@
 	$page_name=nome_file();
 	
 	function connetti_mysql(){
-		$link = mysqli_connect("127.0.0.1","root","","gestionale_{$_SESSION['quintana']}");
+		$link = mysqli_connect("127.0.0.1","root","furente","gestionale_{$_SESSION['quintana']}");
 
 		// Check connection
 		if (mysqli_connect_errno()){
@@ -71,7 +71,7 @@
 	}
 
 	function connetti_mysql_info_schema(){
-		$link = mysqli_connect("127.0.0.1","root","","information_schema");
+		$link = mysqli_connect("127.0.0.1","root","furente","information_schema");
 
 		// Check connection
 		if (mysqli_connect_errno()){
