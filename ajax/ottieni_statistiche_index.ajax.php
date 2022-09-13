@@ -45,7 +45,7 @@
                               FROM Ordini o
                               INNER JOIN Portata p ON p.nome_portata=o.portata
                               WHERE tavolo=$tavolo AND indice=$indice AND serata='$date'
-                              ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda')";
+                              ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda', 'cantinetta')";
 
                 if(($res_ord = mysqli_query($link, $query_ordini))){
                     $totale_tmp = 0;

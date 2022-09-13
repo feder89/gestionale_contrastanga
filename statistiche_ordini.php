@@ -99,7 +99,7 @@
 									INNER JOIN Portata p
 									ON p.nome_portata=o.portata
 									WHERE tavolo=".$row['tavolo']." AND indice=".$row['indice']." AND serata='$date'
-									ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda')";
+									ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda', 'cantinetta')";
 								if(!($res1=esegui_query($link,$query_ordini))){
 									//echo '#error#Errore durante la stampa2';
 									disconnetti_mysql($link);
@@ -273,7 +273,7 @@
 									INNER JOIN Portata p
 									ON p.nome_portata=o.portata
 									WHERE tavolo=".$row_1['tavolo']." AND indice=".$row_1['indice']." AND serata='$date'
-									ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda')";
+									ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda', 'cantinetta')";
 								if(!($res_11=esegui_query($link,$query_ordini))){
 									//echo '#error#Errore durante la stampa2';
 									disconnetti_mysql($link);

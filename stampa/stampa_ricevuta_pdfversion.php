@@ -20,7 +20,7 @@
             INNER JOIN Portata p
             ON p.nome_portata=o.portata
             WHERE tavolo=$tavolo AND indice=$indice AND serata='$serata_attuale'
-            ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda')";
+            ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda', 'cantinetta')";
     
     $link=connetti_mysql();
     if(!($res=esegui_query($link,$query))){

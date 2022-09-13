@@ -26,7 +26,7 @@
                      FROM Ordini o
                      INNER JOIN Portata p ON p.nome_portata = o.portata
                      WHERE o.serata='$date' AND o.tavolo = $tavolo AND o.indice = $indice
-                     ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda')";
+                     ORDER BY FIELD(p.categoria, 'pane e coperto', 'antipasto', 'bruschette e crostoni', 'primo', 'secondo', 'piadina', 'contorno', 'dolce', 'bevanda', 'cantinetta')";
   				
   	if( ($result = esegui_query($link, $query)) && ($res_ord = esegui_query($link, $query_ordini))){ 
       if($row_com = mysqli_fetch_assoc($result)){
