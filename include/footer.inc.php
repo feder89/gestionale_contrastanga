@@ -285,10 +285,10 @@
       }
     }
     else if($page_name == 'index.php'){
-      echo '<script src="charts/Chart.min.js"></script>
-            <script src="js/Chart.HorizontalBar.js"></script>
-            <script src="js/index-ajax-update.js"></script>
-            <script src="js/salva-prenotazioni.js"></script>';
+      echo '<script language="javascript" type="text/javascript"  src="charts/Chart.min.js"></script>
+            <script language="javascript" type="text/javascript" src="js/Chart.HorizontalBar.js"></script>
+            <script language="javascript" type="text/javascript" src="js/index-ajax-update.js"></script>
+            <script language="javascript" type="text/javascript" src="js/salva-prenotazioni.js"></script>';
     }
 
 
