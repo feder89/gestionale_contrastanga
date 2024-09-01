@@ -43,7 +43,7 @@
             else{
                 $nuovo_indice = 1;
             }
-            mysqli_free_result($res);
+            if(isset($res)) mysqli_free_result($res);
 
             $query_num_comanda="SELECT MAX(num_comanda) AS max_num_com FROM Comande WHERE serata='$date'";
             if(!($res3 = mysqli_query($link, $query_num_comanda))){
@@ -69,7 +69,7 @@
                 die();
             }
 
-            mysqli_free_result($res);
+            if(isset($res)) mysqli_free_result($res);
 
             //inserisci ordini e rimuovi quantita
             foreach ($ordini as $key => $ordine) {
@@ -245,7 +245,7 @@
                 disconnetti_mysql($link);
                 die();
             }
-            mysqli_free_result($res);
+            if(isset($res)) mysqli_free_result($res);
 
             //aggiorna num soci
             $query = "UPDATE Comande SET numero_soci = $numero_soci, sconto_manuale = $sconto_manuale, annotazioni = '$annotazioni' WHERE serata = '$date' AND tavolo = $tavolo AND indice = $indice";
