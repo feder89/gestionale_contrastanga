@@ -445,7 +445,7 @@
                                     else {
 
                                       if( $acqua_ordinata < $acqua_compresa){
-                                        //forse c'è qualcosa da pagare
+                                        //forse c'ï¿½ qualcosa da pagare
                                         $i=1;
                                         $acqua_da_pagare=0;
                                         while( $i <= $quant ){
@@ -482,7 +482,7 @@
                                   }                 
                                   else {
                                     if( $vino_ordinato < $vino_compreso){
-                                      //forse c'è qualcosa da pagare
+                                      //forse c'ï¿½ qualcosa da pagare
                                       $i=1;
                                       $vino_da_pagare=0;
                                       while( $i <= $quant ){
@@ -547,7 +547,7 @@
                         $tot_persona=$totale_fin/$coperti;
                         $totale_fin=number_format($totale_fin, 2, '.', ' ');
                         $totale=number_format($totale, 2, '.', ' ');
-                        mysqli_free_result($res);
+                        //mysqli_free_result($res);
                     $html.='</table>
                     </div>
                       <div class="info">

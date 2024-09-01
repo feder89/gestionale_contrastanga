@@ -74,7 +74,7 @@
 						else  $insert_q .= ",('$serata','".$row['nome_portata']."', $default)";
 					$c++;
 				}
-				mysqli_free_result($res);
+				//mysqli_free_result($res);
 
 				if(!esegui_query($link, $insert_q)){ 
 					echo '#error#Errore durante l\'operazione'.mysqli_error($link).mysqli_error($link);

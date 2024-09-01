@@ -311,7 +311,7 @@
                         $totale_sconto_soci=($totale/$coperti)*(0.1*$soci);
                         $totale_fin=$totale-$totale_sconto_soci;
                         $totale_fin=number_format($totale_fin, 2, ',', ' ');
-                        mysqli_free_result($res);
+                        //mysqli_free_result($res);
                     $html.='</table>
                 </td>
                 <td class="info" style="margin-top: 0mm; padding-top: 0; vertical-align: top;">

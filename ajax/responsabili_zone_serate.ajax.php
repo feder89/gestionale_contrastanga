@@ -13,7 +13,7 @@
             while($tav=mysqli_fetch_assoc($res)){
                 $tavoli[]=$tav['numero_tavolo'];
             }
-            mysqli_free_result($res);	
+            //mysqli_free_result($res);	
         }
             
 
@@ -55,7 +55,7 @@
             while($tav=mysqli_fetch_assoc($res)){
                 $tavoli[]=$tav['numero_tavolo'];
             }
-            mysqli_free_result($res);	
+            //mysqli_free_result($res);	
         }
 
         mysqli_autocommit($link, FALSE); /* disable autocommit */

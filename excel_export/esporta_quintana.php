@@ -98,7 +98,7 @@ if(mysqli_num_rows($res5)>=1){
         $exporter->addRow(array($row5['menu'], $row5['NUM'], "€ ".number_format($row5['prezzo_fisso'],2, '.',' ')));
     } 
 }
-mysqli_free_result($res5);
+//mysqli_free_result($res5);
 $exporter->addRow(array());
 $exporter->addRow(array('Menù', 'coperti venduti'));
 $res4=esegui_query($link,$query_cop_menu_fissi);

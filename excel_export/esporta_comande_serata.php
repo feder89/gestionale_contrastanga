@@ -188,7 +188,7 @@ if(!($res=esegui_query($link,$query))){
             $tot_persona=$totale_fin/$coperti;
             $totale_fin=number_format($totale_fin, 2, '.', ' ');
             $totale=number_format($totale, 2, '.', ' ');
-            mysqli_free_result($res1);
+            //mysqli_free_result($res1);
 		}
 		$exporter->addRow(array("","","","", "Totale Parziale: € ".$totale));
 		$exporter->addRow(array("","","","","Numero Soci: ".$row['numero_soci']));

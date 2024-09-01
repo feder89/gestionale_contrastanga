@@ -106,7 +106,7 @@
 	}
 
 	function disconnetti_mysql($link,$res = NULL){
-		if(isset($res) && !empty($res)) mysqli_free_result ( $res );
+		if(isset($res) && !empty($res)) //mysqli_free_result ( $res );
 		mysqli_close ( $link );
 	}
 

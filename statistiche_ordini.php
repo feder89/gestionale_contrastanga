@@ -67,7 +67,7 @@
                       }
 					  echo '</tbody>
               </table>';
-              mysqli_free_result($res2);
+              //mysqli_free_result($res2);
 						$query1="SELECT * FROM Comande c
 								  INNER JOIN Menu m ON c.menu=m.nome_menu
 								  WHERE serata='$date' AND (c.serata, c.tavolo, c.indice) NOT in (SELECT serata,tavolo,indice FROM Ricevutefiscali)";
@@ -240,7 +240,7 @@
 									$tot_persona=$totale_fin/$coperti;
 									$totale_fin=number_format($totale_fin, 2, '.', ' ');
 									$totale=number_format($totale, 2, '.', ' ');
-									mysqli_free_result($res1);
+									//mysqli_free_result($res1);
 								}
 							}
 						}
@@ -409,11 +409,11 @@
 									$tot_persona=$totale_fin/$coperti_;
 									$totale_fin=number_format($totale_fin, 2, '.', ' ');
 									$totale=number_format($totale, 2, '.', ' ');
-									mysqli_free_result($res_11);
+									//mysqli_free_result($res_11);
 								}
 							}
 						}
-						mysqli_free_result($res_1);
+						//mysqli_free_result($res_1);
 						$ric_spotQuery="SELECT totale from Ricevutefiscali WHERE tavolo=0 AND serata='".$date."'";
 						$res_rf=mysqli_query($link, $ric_spotQuery) or die("#error#".mysql_error($link));
 						while ($row_rf = mysqli_fetch_assoc($res_rf)) {
