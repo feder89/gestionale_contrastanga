@@ -51,7 +51,7 @@
                       while($riga=mysqli_fetch_assoc($res1)){
                         $place[]=$riga['zona'];
                       }
-                      mysqli_free_result($res1);
+                      //mysqli_free_result($res1);
                       $query = "SELECT * FROM Tavoli WHERE 1";
                       $res = esegui_query($link, $query);
                       while ( $row = mysqli_fetch_assoc($res)){
