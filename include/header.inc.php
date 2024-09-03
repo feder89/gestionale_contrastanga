@@ -240,3 +240,14 @@
       <!--sidebar end-->
       <!--main content start-->
       <section id="main-content">
+      <script type="text/javascript" src="js/index-ajax-update.js"></script>
+      <script type="text/javascript" src="js/salva-prenotazioni.js"></script>
+      <script>
+          $(document).ready(function(){
+              aggiornaStatistiche(); //.init();
+              setInterval(function(){ 
+                  aggiornaListaComande(); //.init();
+                  aggiornaStatistiche(); //.init();
+              }, 30000); //mezzo minuto
+          });
+      </script>                      

@@ -1,11 +1,3 @@
-$(document).ready(function(){
-    aggiornaStatistiche();
-    setInterval(function(){ 
-        aggiornaListaComande();
-        aggiornaStatistiche();
-    }, 30000); //mezzo minuto
-});
-
 function aggiornaListaComande(){
     $.ajax({
         type: 'POST',
@@ -103,7 +95,9 @@ function aggiornaStatistiche(){
     });
 }
 
-
+function stringStartsWith (string, prefix) {
+    return string.substring(0, prefix.length) == prefix;
+}
 
 
 

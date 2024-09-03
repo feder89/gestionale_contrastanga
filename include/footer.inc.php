@@ -127,6 +127,8 @@
         });
       });
     </script>
+    <script type="text/javascript"  src="charts/Chart.min.js"></script>
+    <script type="text/javascript" src="js/Chart.HorizontalBar.js"></script>
     
 
     <!--right slidebar-->
@@ -283,12 +285,6 @@
           </script>';
 
       }
-    }
-    else if($page_name == 'index.php'){
-      echo '<script language="javascript" type="text/javascript"  src="charts/Chart.min.js"></script>
-            <script language="javascript" type="text/javascript" src="js/Chart.HorizontalBar.js"></script>
-            <script language="javascript" type="text/javascript" src="js/index-ajax-update.js"></script>
-            <script language="javascript" type="text/javascript" src="js/salva-prenotazioni.js"></script>';
     }
 
 
