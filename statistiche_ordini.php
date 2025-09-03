@@ -72,7 +72,7 @@
 								  INNER JOIN Menu m ON c.menu=m.nome_menu
 								  WHERE serata='$date' AND (c.serata, c.tavolo, c.indice) NOT in (SELECT serata,tavolo,indice FROM Ricevutefiscali)";
 						$sconto_manuale=0;
-						$coperti=0;
+						$coperti=1;
 						$tot_serata=0;
 						$tot_serata_non_incassato=0;
 						$tot_serata_da_incassare=0;
@@ -119,7 +119,7 @@
 										  if($row1['portata'] == "Pane e Coperto"){
 											$coperti=$row1['quantita'];
 											if($coperti == 0){
-												$coperti=1
+												$coperti=1;
 											}											
 										  }        
 										}                
@@ -135,7 +135,7 @@
 											if($row1['portata'] == "Pane e Coperto"){
 												$coperti=$quant;
 												if($coperti == 0){
-													$coperti=1
+													$coperti=1;
 												}
 											}
 											if(startsWith(strtolower($row1['portata']), 'acqua')){
@@ -254,7 +254,7 @@
 								  INNER JOIN Menu m ON c.menu=m.nome_menu
 								  WHERE serata='$date' AND (c.serata, c.tavolo, c.indice) in (SELECT serata,tavolo,indice FROM Ricevutefiscali)";
 						$sconto_manuale_=0;
-						$coperti_=0;
+						$coperti_=1;
 						$tot_serata_=0;
 						$attiva_=0;
 						$soci_=0;
@@ -299,7 +299,7 @@
 										  if($row_11['portata'] == "Pane e Coperto"){
 											$coperti_=$row_11['quantita'];
 											if($coperti_ == 0){
-												$coperti_=1
+												$coperti_=1;
 											}											
 										  }        
 										}                
@@ -315,7 +315,7 @@
 											if($row_11['portata'] == "Pane e Coperto"){
 												$coperti_=$quant;
 												if($coperti_ == 0){
-													$coperti_=1
+													$coperti_=1;
 												}												
 											}
 											if(startsWith(strtolower($row_11['portata']), 'acqua')){
@@ -455,7 +455,7 @@
 					            $tavoli=$row_p['tavoli'];
 					            $coperti=$row_p['coperti'];
 						    if($coperti == 0){
-						    	$coperti=1
+						    	$coperti=1;
 						    }					            
 					        }
 						}	
