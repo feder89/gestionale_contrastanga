@@ -118,6 +118,9 @@
 											//$totale=number_format($totale, 2, ',', ' ');
 										  if($row1['portata'] == "Pane e Coperto"){
 											$coperti=$row1['quantita'];
+											if($coperti == 0){
+												$coperti=1
+											}											
 										  }        
 										}                
 									}elseif($menu_fisso==1){
@@ -131,6 +134,9 @@
 											$quant = $row1['quantita'];
 											if($row1['portata'] == "Pane e Coperto"){
 												$coperti=$quant;
+												if($coperti == 0){
+													$coperti=1
+												}
 											}
 											if(startsWith(strtolower($row1['portata']), 'acqua')){
 												$acqua_compresa=ceil($coperti/2);
@@ -292,6 +298,9 @@
 											//$totale=number_format($totale, 2, ',', ' ');
 										  if($row_11['portata'] == "Pane e Coperto"){
 											$coperti_=$row_11['quantita'];
+											if($coperti_ == 0){
+												$coperti_=1
+											}											
 										  }        
 										}                
 									}elseif($menu_fisso_==1){
@@ -305,6 +314,9 @@
 											$quant = $row_11['quantita'];
 											if($row_11['portata'] == "Pane e Coperto"){
 												$coperti_=$quant;
+												if($coperti_ == 0){
+													$coperti_=1
+												}												
 											}
 											if(startsWith(strtolower($row_11['portata']), 'acqua')){
 												$acqua_compresa=ceil($coperti_/2);
@@ -442,6 +454,9 @@
 					            //controlla che il resposabile non sia lo stesso
 					            $tavoli=$row_p['tavoli'];
 					            $coperti=$row_p['coperti'];
+						    if($coperti == 0){
+						    	$coperti=1
+						    }					            
 					        }
 						}	
 						echo '<br/><br/> Numero tavoli preontati: '.$tavoli.'<br/>
